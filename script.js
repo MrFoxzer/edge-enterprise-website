@@ -100,29 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function initAnimations() {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero animations handled by CSS keyframes for reliability
-
-        // Hero parallax on scroll
-        gsap.to('.hero-content', {
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 1
-            },
-            y: -100,
-            opacity: 0
-        });
-
-        gsap.to('.hero-video', {
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 1
-            },
-            scale: 1.1
-        });
+        // Hero animations handled by pure CSS keyframes
+        // No GSAP touches hero elements to avoid conflicts
 
         // Scroll-triggered section animations
         const animateElements = document.querySelectorAll('[data-animate]');
