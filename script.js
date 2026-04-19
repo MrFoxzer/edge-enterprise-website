@@ -373,10 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---- Text Reveal on Scroll ----
-    const revealTexts = document.querySelectorAll('.section-title');
-    revealTexts.forEach(text => {
-        const words = text.innerHTML.split(' ');
-        text.innerHTML = words.map(word => `<span class="reveal-word" style="display:inline-block">${word}</span>`).join(' ');
-    });
+    // Skipped word-split to preserve inner HTML spans
 
 });
