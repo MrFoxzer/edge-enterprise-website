@@ -7,22 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Preloader ----
     const preloader = document.getElementById('preloader');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-            document.body.style.overflow = '';
-            initAnimations();
-        }, 2200);
-    });
+    let animationsInitialized = false;
 
-    // Fallback if load event already fired
-    if (document.readyState === 'complete') {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-            document.body.style.overflow = '';
-            initAnimations();
-        }, 2200);
+    function startSite() {
+        if (animationsInitialized) return;
+        animationsInitialized = true;
+        preloader.classList.add('hidden');
+        document.body.style.overflow = '';
+        initAnimations();
     }
+
+    // Fire after short delay regardless of load state
+    setTimeout(startSite, 2500);
+
+    window.addEventListener('load', () => {
+        setTimeout(startSite, 1500);
+    });
 
     // ---- Custom Cursor ----
     const cursorDot = document.getElementById('cursorDot');
