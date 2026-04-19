@@ -100,52 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initAnimations() {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero animations
-        const heroTl = gsap.timeline({ delay: 0.3 });
-
-        heroTl
-            .from('#heroLogo', {
-                y: 40,
-                opacity: 0,
-                scale: 0.9,
-                duration: 1,
-                ease: 'power3.out'
-            })
-            .from('#heroTag1', {
-                y: 80,
-                opacity: 0,
-                duration: 0.8,
-                ease: 'power3.out'
-            }, '-=0.4')
-            .from('#heroTag2', {
-                y: 80,
-                opacity: 0,
-                duration: 0.8,
-                ease: 'power3.out'
-            }, '-=0.5')
-            .from('#heroSub', {
-                y: 30,
-                opacity: 0,
-                duration: 0.6,
-                ease: 'power3.out'
-            }, '-=0.4')
-            .from('#heroCta1', {
-                y: 20,
-                opacity: 0,
-                duration: 0.5,
-                ease: 'power3.out'
-            }, '-=0.3')
-            .from('#heroCta2', {
-                y: 20,
-                opacity: 0,
-                duration: 0.5,
-                ease: 'power3.out'
-            }, '-=0.3')
-            .from('#scrollIndicator', {
-                opacity: 0,
-                duration: 0.6,
-                ease: 'power2.out'
-            }, '-=0.2');
+        // Hero animations handled by CSS keyframes for reliability
 
         // Hero parallax on scroll
         gsap.to('.hero-content', {
