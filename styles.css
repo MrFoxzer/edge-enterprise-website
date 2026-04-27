@@ -829,6 +829,55 @@ body.cursor-hover .cursor-ring {
     gap: 20px;
 }
 
+.partners-strip {
+    margin-top: 56px;
+    padding: 28px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.partners-label {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+}
+
+.partners-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.partners-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: 0.02em;
+}
+
+.partners-divider {
+    color: var(--accent, #d4a857);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .partners-strip { padding: 22px 20px; flex-direction: column; gap: 14px; }
+    .partners-name { font-size: 18px; }
+}
+
 .project-card {
     position: relative;
     border-radius: var(--radius);
