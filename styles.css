@@ -829,6 +829,10 @@ body.cursor-hover .cursor-ring {
     gap: 20px;
 }
 
+.projects-grid .gallery-link {
+    display: none;
+}
+
 .partners-strip {
     margin-top: 56px;
     padding: 28px 32px;
