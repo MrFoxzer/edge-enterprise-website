@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function startSite() {
         if (animationsInitialized) return;
         animationsInitialized = true;
-        preloader.classList.add('hidden');
+        if (preloader) preloader.classList.add('hidden');
         document.body.style.overflow = '';
         initAnimations();
     }
 
     // Fire after short delay regardless of load state
-    setTimeout(startSite, 2500);
+    setTimeout(startSite, preloader ? 2500 : 0);
 
     window.addEventListener('load', () => {
-        setTimeout(startSite, 1500);
+        setTimeout(startSite, preloader ? 1500 : 0);
     });
 
     // ---- Custom Cursor ----
@@ -61,27 +61,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('navLinks');
 
     // Scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Mobile toggle
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-
-    // Close mobile nav on link click
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
         });
-    });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
