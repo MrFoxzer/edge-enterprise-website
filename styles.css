@@ -1957,3 +1957,9 @@ body.cursor-hover .cursor-ring {
     .city-hero-ctas { flex-direction: column; }
     .city-hero-ctas .btn { width: 100%; justify-content: center; }
 }
+
+/* Service areas: view-all link */
+.service-areas-viewall {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
