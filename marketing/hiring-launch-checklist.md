@@ -24,15 +24,18 @@ Use this checklist before the recruitment campaign goes live. The destination fo
 - [ ] Use only approved project photography, the Edge Enterprise logo, and the approved dark/gold, Inter, and Playfair Display presentation.
 - [ ] Confirm every asset uses the single CTA: “Apply with a résumé at https://edgeenterprise.net/careers.”
 - [ ] Confirm copy does not invent pay, benefits, schedules, travel, certifications, a start date, or unverified company claims.
-- [ ] Obtain the pay-disclosure decision: document whether the company meets Minnesota's 30-employee threshold; if it does, add the required salary-range and benefits/other-compensation disclosure to every job posting before approval.
+- [ ] **LAUNCH BLOCKER — before any production publication or paid promotion in Moorhead:** document whether the company meets Minnesota's 30-employee threshold. If it does, add the required salary-range and benefits/other-compensation disclosure to every job posting before approval.
 - [ ] Confirm nobody asks for or uses applicant pay history to determine compensation.
 - [ ] In Meta Ads Manager, select the Employment Special Ad Category and remove prohibited demographic or protected-characteristic targeting and proxy targeting.
 - [ ] Use objective, role-related qualification language only; retain the same screening criteria for all applicants.
 
 ## URLs, measurement, and approval
 
-- [ ] Build destination URLs from `https://edgeenterprise.net/careers` only. Add channel parameters without changing the path, for example: `https://edgeenterprise.net/careers?utm_source=meta&utm_medium=paid_social&utm_campaign=fargo_moorhead_hiring`.
-- [ ] Create a separate UTM value for each channel/creative; record the final URLs and campaign owner in the launch tracker.
+- [ ] Use these final, campaign-ready URLs; each preserves the required `/careers` destination:
+  - Skilled craft: `https://edgeenterprise.net/careers?utm_source=meta&utm_medium=paid_social&utm_campaign=fargo_moorhead_hiring&utm_content=skilled_craft`
+  - Local full-time opportunity: `https://edgeenterprise.net/careers?utm_source=meta&utm_medium=paid_social&utm_campaign=fargo_moorhead_hiring&utm_content=local_full_time`
+  - Family-owned integrity and precision: `https://edgeenterprise.net/careers?utm_source=meta&utm_medium=paid_social&utm_campaign=fargo_moorhead_hiring&utm_content=family_integrity_precision`
+- [ ] Record the assigned final URL and campaign owner in the launch tracker; do not create substitute campaign destinations.
 - [ ] Test every final destination URL in a private browser window and confirm it loads `/careers` over HTTPS.
 - [ ] Review the live-form dashboard and notification configuration one final time after the test submission.
 - [ ] Get production approval from the designated owner after legal/payroll, creative, destination, and measurement checks are complete.
