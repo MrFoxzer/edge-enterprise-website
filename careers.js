@@ -5,6 +5,7 @@
 })(typeof window !== "undefined" ? window : null, function () {
     const MAX_RESUME_SIZE = 5 * 1024 * 1024;
     const allowedMimeTypesByExtension = {
+        __proto__: null,
         pdf: new Set(["application/pdf"]),
         doc: new Set(["application/msword"]),
         docx: new Set(["application/vnd.openxmlformats-officedocument.wordprocessingml.document"]),

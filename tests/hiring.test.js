@@ -90,6 +90,13 @@ test("rejects a resume when its allowed extension and MIME do not match", () => 
   });
 });
 
+test("rejects an inherited-property extension with an empty MIME", () => {
+  assert.deepEqual(validateResume({ name: "resume.constructor", type: "", size: 128 }), {
+    valid: false,
+    error: "Upload a PDF, DOC, or DOCX résumé.",
+  });
+});
+
 test("requires a resume file", () => {
   assert.deepEqual(validateResume(null), {
     valid: false,
