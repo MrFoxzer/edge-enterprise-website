@@ -76,6 +76,20 @@ test("rejects unsupported resume file types", () => {
   });
 });
 
+test("rejects a resume with a disallowed extension even if its MIME is allowed", () => {
+  assert.deepEqual(validateResume({ name: "resume.exe", type: "application/pdf", size: 128 }), {
+    valid: false,
+    error: "Upload a PDF, DOC, or DOCX résumé.",
+  });
+});
+
+test("rejects a resume when its allowed extension and MIME do not match", () => {
+  assert.deepEqual(validateResume({ name: "resume.docx", type: "application/pdf", size: 128 }), {
+    valid: false,
+    error: "Upload a PDF, DOC, or DOCX résumé.",
+  });
+});
+
 test("requires a resume file", () => {
   assert.deepEqual(validateResume(null), {
     valid: false,

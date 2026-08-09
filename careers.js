@@ -4,18 +4,18 @@
     if (root) root.EdgeCareers = api;
 })(typeof window !== "undefined" ? window : null, function () {
     const MAX_RESUME_SIZE = 5 * 1024 * 1024;
-    const allowedTypes = new Set([
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    ]);
-    const allowedExtensions = new Set(["pdf", "doc", "docx"]);
+    const allowedMimeTypesByExtension = {
+        pdf: new Set(["application/pdf"]),
+        doc: new Set(["application/msword"]),
+        docx: new Set(["application/vnd.openxmlformats-officedocument.wordprocessingml.document"]),
+    };
 
     function validateResume(file) {
         if (!file) return { valid: false, error: "Please attach your résumé." };
         if (file.size > MAX_RESUME_SIZE) return { valid: false, error: "Résumé must be 5 MB or smaller." };
         const extension = (file.name || "").split(".").pop().toLowerCase();
-        const allowed = allowedTypes.has(file.type) || (!file.type && allowedExtensions.has(extension));
+        const expectedMimeTypes = allowedMimeTypesByExtension[extension];
+        const allowed = expectedMimeTypes && (!file.type || expectedMimeTypes.has(file.type));
         return allowed ? { valid: true, error: "" } : { valid: false, error: "Upload a PDF, DOC, or DOCX résumé." };
     }
 
