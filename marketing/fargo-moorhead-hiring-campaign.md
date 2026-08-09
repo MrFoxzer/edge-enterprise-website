@@ -126,6 +126,12 @@ Framing Carpenter and Framing Laborer: full-time Fargo–Moorhead. Framing exper
 Wood framing in progress on an Edge Enterprise commercial or multi-family project in the Fargo–Moorhead area.
 ```
 
+### Organic Facebook / Instagram caption (218 characters)
+
+```text
+Fargo–Moorhead: Edge Enterprise LLC is hiring for the full-time Framing Carpenter and Framing Laborer roles. Prior framing knowledge or experience is required. Apply with a résumé at https://edgeenterprise.net/careers.
+```
+
 ## Character-count verification
 
 Counts above include spaces, punctuation, paragraph breaks, and the URL; they exclude the Markdown fence line breaks. Run this from the repository root after any copy edit. This verifies each individual Meta/Instagram field, rather than only a combined ad block.
@@ -141,7 +147,7 @@ for (const [, title, stated, copy] of blocks) {
   console.log(`${title}: stated ${stated}, actual ${actual}`);
   failed ||= actual !== Number(stated);
 }
-if (blocks.length !== 15 || failed) process.exitCode = 1;
+if (blocks.length !== 16 || failed) process.exitCode = 1;
 NODE
 ```
 
@@ -163,9 +169,12 @@ Meta 3 CTA button: stated 9, actual 9
 LinkedIn / Indeed-style job post: stated 796, actual 796
 Shareable / SMS version: stated 152, actual 152
 Suggested image alt text: stated 109, actual 109
+Organic Facebook / Instagram caption: stated 218, actual 218
 ```
 
 ## Publishing guardrails
+
+**LAUNCH BLOCKER — do not publish in production or paid-promote in Moorhead until Edge Enterprise has determined whether it meets Minnesota's 30-employee threshold and, if covered, added the required salary-range and benefits/other-compensation disclosure to every job posting.**
 
 - **Meta employment ads:** In Ads Manager, select the **Employment** Special Ad Category before building the campaign. Meta requires this category for employment ads; see its [Special Ad Category guidance](https://www.facebook.com/business/help/298000447747885) and [ads fairness update](https://about.fb.com/news/2023/01/an-update-on-our-ads-fairness-efforts/).
 - **No targeting shortcuts:** Do not target or exclude people by age, gender, race, ethnicity, religion, disability, family status, ZIP code, or other protected-characteristic proxies. Do not write creative that signals a preference for, exclusion of, or assumption about a protected group. Keep location and qualification language job-related and objective. See the [EEOC's prohibited employment policies and practices](https://www.eeoc.gov/prohibited-employment-policiespractices).
