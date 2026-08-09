@@ -36,10 +36,10 @@ Bring Your Framing Skill to Edge
 Full-time Fargo–Moorhead roles; prior framing knowledge or experience required.
 ```
 
-#### Meta 1 CTA button (19 characters)
+#### Meta 1 CTA button (9 characters)
 
 ```text
-Apply with a résumé
+Apply Now
 ```
 
 CTA destination: `https://edgeenterprise.net/careers`
@@ -64,10 +64,10 @@ Full-Time Framing Work in Fargo–Moorhead
 Framing Carpenter and Framing Laborer opportunities with Edge Enterprise LLC.
 ```
 
-#### Meta 2 CTA button (22 characters)
+#### Meta 2 CTA button (9 characters)
 
 ```text
-Apply with your résumé
+Apply Now
 ```
 
 CTA destination: `https://edgeenterprise.net/careers`
@@ -92,10 +92,10 @@ Frame With Integrity and Precision
 Family-owned Edge Enterprise is hiring qualified framers in Fargo–Moorhead.
 ```
 
-#### Meta 3 CTA button (18 characters)
+#### Meta 3 CTA button (9 characters)
 
 ```text
-Submit your résumé
+Apply Now
 ```
 
 CTA destination: `https://edgeenterprise.net/careers`
@@ -151,15 +151,15 @@ Verified output:
 Meta 1 primary text: stated 289, actual 289
 Meta 1 headline: stated 32, actual 32
 Meta 1 description: stated 79, actual 79
-Meta 1 CTA button: stated 19, actual 19
+Meta 1 CTA button: stated 9, actual 9
 Meta 2 primary text: stated 301, actual 301
 Meta 2 headline: stated 40, actual 40
 Meta 2 description: stated 77, actual 77
-Meta 2 CTA button: stated 22, actual 22
+Meta 2 CTA button: stated 9, actual 9
 Meta 3 primary text: stated 338, actual 338
 Meta 3 headline: stated 34, actual 34
 Meta 3 description: stated 75, actual 75
-Meta 3 CTA button: stated 18, actual 18
+Meta 3 CTA button: stated 9, actual 9
 LinkedIn / Indeed-style job post: stated 796, actual 796
 Shareable / SMS version: stated 152, actual 152
 Suggested image alt text: stated 109, actual 109
