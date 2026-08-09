@@ -1963,3 +1963,37 @@ body.cursor-hover .cursor-ring {
     color: var(--primary) !important;
     font-weight: 600;
 }
+
+/* ---------- Hiring Banner ---------- */
+.hiring-banner {
+    background: var(--dark-3);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 48px 0;
+}
+
+.hiring-banner-inner {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hiring-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+    margin: 10px 0;
+}
+
+.hiring-banner p {
+    color: var(--gray-light);
+}
+
+.hiring-banner-cta {
+    flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+    .hiring-banner-inner { align-items: flex-start; flex-direction: column; }
+}
