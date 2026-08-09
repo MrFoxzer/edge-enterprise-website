@@ -114,10 +114,10 @@ Edge Enterprise is a family-owned construction company. We value integrity, prec
 Apply with a résumé at https://edgeenterprise.net/careers.
 ```
 
-### Shareable / SMS version (152 characters)
+### Shareable / SMS version (159 characters)
 
 ```text
-Framing Carpenter and Framing Laborer: full-time Fargo–Moorhead. Framing experience required. Apply with a résumé at https://edgeenterprise.net/careers.
+Full-time Framing Carpenter and Framing Laborer jobs in Fargo-Moorhead. Framing experience required. Apply with a resume at https://edgeenterprise.net/careers.
 ```
 
 ### Suggested image alt text (109 characters)
@@ -167,7 +167,7 @@ Meta 3 headline: stated 34, actual 34
 Meta 3 description: stated 75, actual 75
 Meta 3 CTA button: stated 9, actual 9
 LinkedIn / Indeed-style job post: stated 796, actual 796
-Shareable / SMS version: stated 152, actual 152
+Shareable / SMS version: stated 159, actual 159
 Suggested image alt text: stated 109, actual 109
 Organic Facebook / Instagram caption: stated 218, actual 218
 ```

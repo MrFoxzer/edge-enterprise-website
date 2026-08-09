@@ -13,6 +13,7 @@
 
     function validateResume(file) {
         if (!file) return { valid: false, error: "Please attach your résumé." };
+        if (file.size <= 0) return { valid: false, error: "Résumé file cannot be empty." };
         if (file.size > MAX_RESUME_SIZE) return { valid: false, error: "Résumé must be 5 MB or smaller." };
         const extension = (file.name || "").split(".").pop().toLowerCase();
         const expectedMimeTypes = allowedMimeTypesByExtension[extension];

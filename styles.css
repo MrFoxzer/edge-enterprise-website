@@ -1882,6 +1882,23 @@ body.cursor-hover .cursor-ring {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
+    .nav-links {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+        transform: translateX(100%);
+        transition: transform var(--transition);
+    }
+
+    .nav-links.active { transform: translateX(0); }
+
+    .nav-link { font-size: 24px; }
+    .nav-toggle { display: flex; }
+
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
     .project-card-large { grid-column: span 2; }
@@ -1904,23 +1921,6 @@ body.cursor-hover .cursor-ring {
 
     .container { padding: 0 24px; }
     .section { padding: 80px 0; }
-
-    .nav-links {
-        position: fixed;
-        inset: 0;
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        justify-content: center;
-        gap: 24px;
-        transform: translateX(100%);
-        transition: transform var(--transition);
-    }
-
-    .nav-links.active { transform: translateX(0); }
-
-    .nav-link { font-size: 24px; }
-    .nav-toggle { display: flex; }
 
     .hero-logo-img { width: 220px; }
     .hero-tagline { font-size: clamp(24px, 6vw, 40px); }

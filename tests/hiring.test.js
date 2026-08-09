@@ -7,9 +7,25 @@ const root = path.join(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
 const careers = read("careers.html");
+const careersCss = read("careers.css");
 const home = read("index.html");
+const styles = read("styles.css");
 const success = read("application-received.html");
 const { validateResume } = require(path.join(root, "careers.js"));
+
+function blockAfter(source, marker) {
+  const markerIndex = source.indexOf(marker);
+  assert.notEqual(markerIndex, -1, `Missing ${marker}`);
+  const openingBrace = source.indexOf("{", markerIndex + marker.length);
+  assert.notEqual(openingBrace, -1, `Missing block for ${marker}`);
+  let depth = 0;
+  for (let index = openingBrace; index < source.length; index += 1) {
+    if (source[index] === "{") depth += 1;
+    if (source[index] === "}") depth -= 1;
+    if (depth === 0) return source.slice(openingBrace + 1, index);
+  }
+  assert.fail(`Unclosed block for ${marker}`);
+}
 
 test("careers page exposes the complete Netlify resume form", () => {
   assert.match(careers, /name="employment-application"/);
@@ -56,6 +72,13 @@ test("rejects a resume larger than 5 MB", () => {
   assert.deepEqual(validateResume({ name: "resume.pdf", type: "application/pdf", size: 5 * 1024 * 1024 + 1 }), {
     valid: false,
     error: "Résumé must be 5 MB or smaller.",
+  });
+});
+
+test("rejects a zero-byte PDF resume", () => {
+  assert.deepEqual(validateResume({ name: "resume.pdf", type: "application/pdf", size: 0 }), {
+    valid: false,
+    error: "Résumé file cannot be empty.",
   });
 });
 
@@ -120,10 +143,35 @@ test("application received page confirms the native application submission", () 
 
 test("careers page references the approved social card and accessibility essentials", () => {
   assert.match(careers, /property="og:image" content="[^\"]*hiring-social-card\.png"/);
+  assert.match(careers, /property="og:image:alt" content="Edge Enterprise now hiring framing carpenters and framing laborers in Fargo–Moorhead over an aerial wood-framing project\."/);
+  assert.match(careers, /property="og:image:width" content="1200"/);
+  assert.match(careers, /property="og:image:height" content="628"/);
   assert.match(careers, /href="hiring-social-card\.png"/);
   assert.match(careers, /class="skip-link"/);
   assert.match(careers, /role="alert"/);
   assert.match(careers, /careers\.css/);
   assert.match(careers, /careers\.js/);
   assert.equal(fs.existsSync(path.join(root, "hiring-social-card.png")), true);
+});
+
+test("careers skip link and primary buttons keep dark text in every interaction state", () => {
+  assert.match(blockAfter(careersCss, ".careers-page .skip-link"), /color:\s*var\(--black\)/);
+  assert.match(
+    careersCss,
+    /\.careers-page \.skip-link:hover,\s*\.careers-page \.skip-link:focus\s*{[^}]*color:\s*var\(--black\)/,
+  );
+  assert.match(blockAfter(careersCss, ".careers-page .button-primary"), /color:\s*var\(--black\)/);
+  assert.match(
+    careersCss,
+    /\.careers-page \.button-primary:hover,\s*\.careers-page \.button-primary:focus-visible\s*{[^}]*color:\s*var\(--black\)/,
+  );
+  assert.match(careersCss, /:focus-visible\s*{[^}]*outline:\s*3px solid var\(--gold-light\)/);
+});
+
+test("homepage switches to the existing overlay navigation throughout tablet widths", () => {
+  const tabletStyles = blockAfter(styles, "@media (max-width: 1024px)");
+  assert.match(blockAfter(tabletStyles, ".nav-links"), /position:\s*fixed/);
+  assert.match(blockAfter(tabletStyles, ".nav-links"), /transform:\s*translateX\(100%\)/);
+  assert.match(blockAfter(tabletStyles, ".nav-links.active"), /transform:\s*translateX\(0\)/);
+  assert.match(blockAfter(tabletStyles, ".nav-toggle"), /display:\s*flex/);
 });
