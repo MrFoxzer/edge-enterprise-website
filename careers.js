@@ -1,0 +1,52 @@
+(function (root, factory) {
+    const api = factory();
+    if (typeof module !== "undefined" && module.exports) module.exports = api;
+    if (root) root.EdgeCareers = api;
+})(typeof window !== "undefined" ? window : null, function () {
+    const MAX_RESUME_SIZE = 5 * 1024 * 1024;
+    const allowedMimeTypesByExtension = {
+        __proto__: null,
+        pdf: new Set(["application/pdf"]),
+        doc: new Set(["application/msword"]),
+        docx: new Set(["application/vnd.openxmlformats-officedocument.wordprocessingml.document"]),
+    };
+
+    function validateResume(file) {
+        if (!file) return { valid: false, error: "Please attach your résumé." };
+        if (file.size <= 0) return { valid: false, error: "Résumé file cannot be empty." };
+        if (file.size > MAX_RESUME_SIZE) return { valid: false, error: "Résumé must be 5 MB or smaller." };
+        const extension = (file.name || "").split(".").pop().toLowerCase();
+        const expectedMimeTypes = allowedMimeTypesByExtension[extension];
+        const allowed = expectedMimeTypes && (!file.type || expectedMimeTypes.has(file.type));
+        return allowed ? { valid: true, error: "" } : { valid: false, error: "Upload a PDF, DOC, or DOCX résumé." };
+    }
+
+    function setResumeError(errorRegion, input, result) {
+        errorRegion.textContent = result.error;
+        input.setCustomValidity(result.error);
+    }
+
+    if (typeof document !== "undefined") {
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector(".application-form");
+            const input = document.querySelector("#resume");
+            const errorRegion = document.querySelector("#resume-error");
+            if (!form || !input || !errorRegion) return;
+
+            const validateInput = function () {
+                const result = validateResume(input.files && input.files[0]);
+                setResumeError(errorRegion, input, result);
+                return result;
+            };
+
+            input.addEventListener("change", validateInput);
+            input.addEventListener("invalid", validateInput);
+            form.addEventListener("submit", function (event) {
+                const result = validateInput();
+                if (!result.valid) event.preventDefault();
+            });
+        });
+    }
+
+    return { validateResume };
+});

@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 768 && cursorDot && cursorRing) {
+        document.body.classList.add('custom-cursor-active');
+
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
