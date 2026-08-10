@@ -175,3 +175,8 @@ test("homepage switches to the existing overlay navigation throughout tablet wid
   assert.match(blockAfter(tabletStyles, ".nav-links.active"), /transform:\s*translateX\(0\)/);
   assert.match(blockAfter(tabletStyles, ".nav-toggle"), /display:\s*flex/);
 });
+
+test("homepage prevents entrance animations from creating tablet horizontal scroll", () => {
+  assert.match(blockAfter(styles, "html"), /overflow-x:\s*hidden/);
+  assert.match(blockAfter(styles, "body"), /overflow-x:\s*hidden/);
+});
