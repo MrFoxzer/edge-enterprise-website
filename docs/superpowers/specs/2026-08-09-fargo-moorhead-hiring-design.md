@@ -74,4 +74,3 @@ The form collects only name, email, phone, desired role, years of framing experi
 - Homepage visitors can reach `/careers` from both navigation and a visible hiring banner.
 - No unsupported compensation, benefit, schedule, travel, certification, or company-history claim is added.
 - Automated tests pass, HTML links/assets resolve in the draft deploy, and production is not modified.
-

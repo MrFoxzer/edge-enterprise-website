@@ -157,4 +157,3 @@ Use the Netlify API to list site forms and confirm `employment-application` exis
 - [ ] **Step 5: Commit verification fixes if any**
 
 If files changed, commit only the verified fixes with a focused message. Otherwise preserve the Task 2 commit as the branch head.
-
