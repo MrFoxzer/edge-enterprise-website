@@ -7,3 +7,4 @@ node_modules/
 
 # Project videos that ship with the site
 !projects/rogers-senior-living-flyover.mp4
+!hero-rogers.mp4
