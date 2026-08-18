@@ -474,7 +474,7 @@ def head_block(title, desc, canon_path, depth, schema_json):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{up}styles.css">
+    <link rel="stylesheet" href="{up}styles.css?v=nc1">
     <script type="application/ld+json">
 {schema_json}
     </script>
@@ -546,7 +546,7 @@ def footer_block(depth):
             </div>
         </div>
     </footer>
-    <script src="{up}script.js"></script>
+    <script src="{up}script.js?v=nc1"></script>
 </body>
 </html>"""
 

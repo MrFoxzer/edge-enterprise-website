@@ -72,7 +72,7 @@ FOOTER = """
             </div>
         </div>
     </footer>
-    <script src="/script.js"></script>
+    <script src="/script.js?v=nc1"></script>
 </body>
 </html>"""
 
@@ -99,7 +99,7 @@ def head(title, desc, canon, schema="", extra_head=""):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">{extra_head}{schema_tag}
+    <link rel="stylesheet" href="/styles.css?v=nc1">{extra_head}{schema_tag}
 </head>
 <body>"""
 
