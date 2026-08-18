@@ -236,8 +236,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = '<span>Sending...</span>';
             btn.disabled = true;
 
-            // Simulate send (replace with actual form handler)
-            setTimeout(() => {
+            const data = new FormData(contactForm);
+            fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(data).toString() })
+            .then(() => {
                 btn.innerHTML = '<span>Message Sent!</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
                 btn.style.background = '#22C55E';
 
@@ -247,7 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.disabled = false;
                     contactForm.reset();
                 }, 3000);
-            }, 1500);
+            })
+            .catch(() => { btn.innerHTML = '<span>Error — call (320) 217-2691</span>'; btn.disabled = false; });
         });
     }
 

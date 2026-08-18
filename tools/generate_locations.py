@@ -487,18 +487,18 @@ def nav_block(depth):
     return f"""
     <nav class="nav nav-city" id="mainNav">
         <div class="nav-inner">
-            <a href="{up}index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <span class="nav-logo-text">EDGE <span class="nav-logo-accent">ENTERPRISE</span></span>
                 <img src="{up}logo-icon.png" alt="" class="nav-icon">
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="{up}index.html#about" class="nav-link">About</a>
-                <a href="{up}index.html#services" class="nav-link">Services</a>
-                <a href="{up}index.html#projects" class="nav-link">Projects</a>
-                <a href="{up}index.html#service-areas" class="nav-link">Service Areas</a>
-                <a href="{up}index.html#process" class="nav-link">Process</a>
-                <a href="{up}index.html#testimonials" class="nav-link">Testimonials</a>
-                <a href="{up}index.html#contact" class="nav-link nav-link-cta">Get a Quote</a>
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/services.html" class="nav-link">Services</a>
+                <a href="/projects.html" class="nav-link">Projects</a>
+                <a href="/index.html#service-areas" class="nav-link">Service Areas</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/careers.html" class="nav-link">Careers</a>
+                <a href="/contact.html" class="nav-link nav-link-cta">Get a Quote</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -519,11 +519,12 @@ def footer_block(depth):
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
-                    <a href="{up}index.html#about">About Us</a>
-                    <a href="{up}index.html#services">Services</a>
-                    <a href="{up}index.html#projects">Portfolio</a>
-                    <a href="{up}index.html#service-areas">Service Areas</a>
-                    <a href="{up}index.html#contact">Contact</a>
+                    <a href="/about.html">About Us</a>
+                    <a href="/services.html">Services</a>
+                    <a href="/projects.html">Portfolio</a>
+                    <a href="/blog.html">Blog</a>
+                    <a href="/careers.html">Careers</a>
+                    <a href="/contact.html">Contact</a>
                 </div>
                 <div class="footer-links">
                     <h4>Service Areas</h4>
@@ -534,7 +535,7 @@ def footer_block(depth):
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
-                    <a href="{up}index.html#contact">Send a message</a>
+                    <a href="/contact.html">Send a message</a>
                     <span>Long Prairie, MN</span>
                     <span>Horace, ND</span>
                 </div>
@@ -1135,7 +1136,15 @@ def main():
             patched += 1
 
     # sitemap
-    core = [("", "1.0"), ("index.html", "1.0")]
+    core = [("", "1.0"), ("index.html", "1.0"),
+            ("about.html", "0.8"), ("services.html", "0.9"), ("projects.html", "0.8"),
+            ("contact.html", "0.8"), ("careers.html", "0.7"), ("blog.html", "0.8"),
+            ("blog/wood-vs-steel-framing-commercial.html", "0.7"),
+            ("blog/commercial-framing-cost-guide.html", "0.7"),
+            ("blog/what-is-turnkey-framing.html", "0.7"),
+            ("blog/multi-family-framing-schedule.html", "0.7"),
+            ("blog/zip-system-vs-tyvek-housewrap.html", "0.7"),
+            ("blog/how-to-vet-a-framing-subcontractor.html", "0.7")]
     urls = []
     seen = set()
     for path, pr in core + sorted(pages):

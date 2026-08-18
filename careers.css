@@ -1,0 +1,63 @@
+:root { --gold: #D4A853; --gold-dark: #B8922E; --gold-light: #E8C876; --black: #0A0A0A; --black-soft: #111111; --black-panel: #1A1A1A; --cream: #F5F0E8; --cream-dark: #E8E0D4; --muted: #bdb5a9; --line: rgba(245, 240, 232, .16); --display: "Playfair Display", Georgia, serif; --body: Inter, Arial, sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body.careers-page { margin: 0; background: var(--black); color: var(--cream); font: 16px/1.65 var(--body); cursor: auto; }
+body.careers-page a, body.careers-page button, body.careers-page input, body.careers-page select, body.careers-page textarea { cursor: auto; }
+body.careers-page a { color: inherit; }
+.content { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+.careers-page .skip-link { position: fixed; left: 16px; top: -100px; z-index: 20; padding: 12px 16px; background: var(--cream); color: var(--black); font-weight: 800; }
+.careers-page .skip-link:hover, .careers-page .skip-link:focus { color: var(--black); }
+.skip-link:focus { top: 16px; }
+.site-header { border-bottom: 1px solid var(--line); background: rgba(10, 10, 10, .96); }
+.site-nav { min-height: 76px; width: min(1120px, calc(100% - 48px)); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand img { width: 158px; height: auto; }
+.nav-home { color: var(--cream-dark); font-weight: 700; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.hero { position: relative; min-height: 620px; display: grid; align-items: center; overflow: hidden; }
+.hero-image { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,.96) 7%, rgba(10,10,10,.72) 48%, rgba(10,10,10,.34)), url("projects/45th-street-comeland-1.jpg") center/cover; }
+.hero-content { position: relative; padding: 108px 0; max-width: 820px; }
+.eyebrow { color: var(--gold-light); font-size: .78rem; font-weight: 800; letter-spacing: .15em; margin: 0 0 12px; }
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(3rem, 7vw, 5.6rem); max-width: 780px; }
+h2 { font-size: clamp(2.15rem, 4vw, 3.35rem); }
+h3 { color: var(--gold-light); font-size: 1.8rem; }
+h4 { font-family: var(--body); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; margin: 28px 0 10px; }
+.hero-lead { max-width: 720px; font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--cream-dark); margin: 24px 0; }
+.supporting-line { color: var(--cream-dark); margin: 16px 0 0; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 23px; border: 1px solid transparent; border-radius: 0; font: 800 .9rem var(--body); text-decoration: none; }
+.careers-page .button-primary { background: var(--gold); color: var(--black); }
+.careers-page .button-primary:hover, .careers-page .button-primary:focus-visible { background: var(--gold-light); color: var(--black); }
+.section { padding: 88px 0; }
+.company { max-width: 820px; }
+.company > p:last-child, .application-layout > div > p, .equal-opportunity p { color: var(--cream-dark); font-size: 1.05rem; }
+.roles-section, .application-section { background: var(--black-soft); border-block: 1px solid var(--line); }
+.roles-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+.role-card { border: 1px solid var(--line); padding: clamp(24px, 4vw, 40px); background: var(--black-panel); }
+.role-card > p { color: var(--cream-dark); }
+.role-card ul { padding-left: 21px; }
+.role-card li { margin-block: 7px; }
+.process ol { list-style: none; padding: 0; margin: 32px 0 0; counter-reset: process; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.process li { min-height: 118px; padding: 52px 18px 18px; background: var(--black-panel); border: 1px solid var(--line); position: relative; font-weight: 700; }
+.process li::before { counter-increment: process; content: "0" counter(process); position: absolute; top: 14px; color: var(--gold); font-weight: 800; }
+.application-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(34px, 7vw, 88px); align-items: start; }
+.application-form { background: var(--black-panel); border: 1px solid var(--line); padding: clamp(24px, 4vw, 40px); }
+.form-intro, .form-privacy, #resume-help { color: var(--muted); font-size: .9rem; }
+.field { margin-top: 19px; }
+.field label, .consent label { display: block; font-weight: 700; margin-bottom: 7px; }
+input, select, textarea { width: 100%; min-height: 48px; background: var(--black); border: 1px solid #6d675f; color: var(--cream); font: inherit; padding: 10px 12px; border-radius: 0; }
+textarea { min-height: 125px; resize: vertical; }
+select option { background: var(--black); }
+input[type="file"] { padding: 9px; }
+.form-error { color: #ffd1cc; min-height: 1.65em; font-weight: 700; margin: 12px 0 0; }
+.consent { display: flex; align-items: flex-start; gap: 11px; margin: 22px 0; }
+.consent input { width: 20px; min-width: 20px; min-height: 20px; margin-top: 3px; }
+.consent label { margin: 0; }
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.equal-opportunity { max-width: 860px; }
+.site-footer { border-top: 1px solid var(--line); padding: 32px 0; }
+.site-footer .content { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.site-footer img { width: 120px; }.site-footer p { margin: 0; color: var(--muted); font-size: .88rem; }
+.success-main { min-height: calc(100vh - 166px); display: grid; place-items: center; padding: 72px 24px; background: linear-gradient(rgba(10,10,10,.7), rgba(10,10,10,.93)), url("projects/45th-street-comeland-1.jpg") center/cover; }
+.success-card { width: min(680px, 100%); background: var(--black-panel); border: 1px solid var(--line); padding: clamp(32px, 7vw, 64px); }.success-card p:not(.eyebrow) { color: var(--cream-dark); font-size: 1.08rem; margin: 24px 0; }
+:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
+@media (max-width: 760px) { .content, .site-nav { width: min(100% - 32px, 1120px); }.hero { min-height: 570px; }.hero-image { background: linear-gradient(rgba(10,10,10,.82), rgba(10,10,10,.8)), url("projects/45th-street-comeland-1.jpg") center/cover; }.section { padding: 64px 0; }.roles-grid, .application-layout, .process ol { grid-template-columns: 1fr; }.process li { min-height: 92px; }.site-footer .content { align-items: flex-start; flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

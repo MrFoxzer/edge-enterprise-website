@@ -97,7 +97,7 @@
     <!-- Navigation -->
     <nav class="nav" id="mainNav">
         <div class="nav-inner">
-            <a href="#" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <span class="nav-logo-text">EDGE <span class="nav-logo-accent">ENTERPRISE</span></span>
                 <img src="logo-icon.png" alt="" class="nav-icon">
             </a>
@@ -108,6 +108,8 @@
                 <a href="#service-areas" class="nav-link">Service Areas</a>
                 <a href="#process" class="nav-link">Process</a>
                 <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="careers.html" class="nav-link">Careers</a>
                 <a href="#contact" class="nav-link nav-link-cta">Get a Quote</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -668,24 +670,26 @@
                 </div>
 
                 <div class="contact-form-wrap" data-animate="fade-left">
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
                         <div class="form-group">
-                            <input type="text" id="formName" required placeholder=" ">
+                            <input type="text" id="formName" name="name" required placeholder=" ">
                             <label for="formName">Your Name</label>
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="formEmail" required placeholder=" ">
+                            <input type="email" id="formEmail" name="email" required placeholder=" ">
                             <label for="formEmail">Email Address</label>
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="formPhone" placeholder=" ">
+                            <input type="tel" id="formPhone" name="phone" placeholder=" ">
                             <label for="formPhone">Phone Number</label>
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group">
-                            <select id="formService" required>
+                            <select id="formService" name="service" required>
                                 <option value="" disabled selected></option>
                                 <option value="commercial">Commercial Construction</option>
                                 <option value="residential">Residential Building</option>
@@ -700,7 +704,7 @@
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group">
-                            <textarea id="formMessage" rows="4" required placeholder=" "></textarea>
+                            <textarea id="formMessage" name="message" rows="4" required placeholder=" "></textarea>
                             <label for="formMessage">Project Details</label>
                             <div class="form-line"></div>
                         </div>
