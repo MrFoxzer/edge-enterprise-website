@@ -549,6 +549,7 @@ def footer_block(depth):
             <div class="footer-bottom">
                 <p>&copy; 2026 Edge Enterprise LLC. All rights reserved.</p>
                 <p>Licensed &amp; Insured · HQ Long Prairie, MN · Crews serving MN, ND, WI &amp; MT · COI available on request</p>
+                <p style="font-size:0.8rem;opacity:0.8;margin-top:8px">Trade network: <a href="https://revisionsunlimited.com" style="text-decoration:underline">Revisions Unlimited</a> · <a href="https://allproframingmn.com" style="text-decoration:underline">All Pro Framing</a> · <a href="https://nextgenbuildersmn.com" style="text-decoration:underline">Next Gen Builders</a></p>
             </div>
         </div>
     </footer>
@@ -1148,7 +1149,7 @@ def main():
     core = [("", "1.0"), ("index.html", "1.0"),
             ("about.html", "0.8"), ("services.html", "0.9"), ("projects.html", "0.8"),
             ("contact.html", "0.8"), ("careers.html", "0.7"), ("blog.html", "0.8"),
-            ("for-gcs.html", "0.8"), ("estimate.html", "0.8"),
+            ("for-gcs.html", "0.8"), ("estimate.html", "0.8"), ("faq.html", "0.8"),
             ("projects/rogers-senior-living.html", "0.8")]
     import glob as _glob
     for _bp in sorted(_glob.glob(os.path.join(ROOT, "blog", "*.html"))):

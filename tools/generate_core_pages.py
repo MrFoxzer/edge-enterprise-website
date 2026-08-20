@@ -51,6 +51,7 @@ FOOTER = """
                     <a href="/blog.html">Blog</a>
                     <a href="/careers.html">Careers</a>
                     <a href="/for-gcs.html">For GCs</a>
+                    <a href="/faq.html">FAQ</a>
                     <a href="/estimate.html">Instant Estimate</a>
                     <a href="/contact.html">Contact</a>
                 </div>
@@ -72,6 +73,7 @@ FOOTER = """
             <div class="footer-bottom">
                 <p>&copy; 2026 Edge Enterprise LLC. All rights reserved.</p>
                 <p>Licensed &amp; Insured · HQ Long Prairie, MN · Crews serving MN, ND, WI &amp; MT · COI available on request</p>
+                <p style="font-size:0.8rem;opacity:0.8;margin-top:8px">Trade network: <a href="https://revisionsunlimited.com" style="text-decoration:underline">Revisions Unlimited</a> · <a href="https://allproframingmn.com" style="text-decoration:underline">All Pro Framing</a> · <a href="https://nextgenbuildersmn.com" style="text-decoration:underline">Next Gen Builders</a></p>
             </div>
         </div>
     </footer>

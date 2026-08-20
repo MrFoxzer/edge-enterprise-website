@@ -251,7 +251,79 @@ def build_locations_index():
                                        "locations/index.html") + NAV + body + FOOTER)
 
 
+def build_faq():
+    faqs = [
+        ("What areas does Edge Enterprise serve?",
+         "We're headquartered in Long Prairie, Minnesota with a satellite presence in Horace, North Dakota. Our crews frame across Minnesota, North Dakota, Wisconsin, and Montana — 183 cities and counting — and we travel nationwide for the right project."),
+        ("What types of framing do you do?",
+         "Full-scope structural framing: commercial wood and light-gauge steel framing, multi-family (apartments, townhomes, senior living), custom homes, framing subcontracting for GCs, finished carpentry, window installation, and weather-barrier packages (Zip System and housewrap) — turn-key framed shells under one subcontract."),
+        ("How big are the projects you take on?",
+         "Everything from garages and custom homes to 100+ unit multi-family buildings. We've framed more than 1,000 multi-family units, including the Rogers Senior Living & Senior Center and 45th Street Apartments in Fargo."),
+        ("How do I get a quote?",
+         "Fill out the form on our contact page — attach plans if you have them (PDF or ZIP). We respond within one business day with a call or email back from Jacob or Ramon directly. For a instant budgeting number first, try our free framing cost calculator."),
+        ("How much does framing cost?",
+         "As a 2026 rule of thumb in the Upper Midwest: wood-framed multi-family runs roughly $12-22 per square foot installed (labor + material), labor-only packages roughly $5.50-9 per square foot for multi-family, with commercial and custom work higher. Our estimate calculator gives you a project-specific ballpark in 30 seconds."),
+        ("Do you work as a subcontractor for general contractors?",
+         "Yes — framing subcontracting for GCs is our core business, with repeat partners including Comeland Builders, Gast Construction, and Miller Architects & Builders. See our For GCs page for the full prequalification package."),
+        ("Are you licensed and insured?",
+         "Yes. Edge Enterprises, LLC is licensed and insured, headquartered in Minnesota. We carry commercial general liability, automobile, umbrella, and statutory workers' compensation coverage — certificates of insurance with additional-insured endorsements are issued before mobilization, and our COI is available on request."),
+        ("Can you frame through a Minnesota winter?",
+         "Yes — our crews frame year-round. Cold-weather framing is standard practice for us: material staging, snow removal, and dry-in sequencing are planned so winter doesn't stall your schedule."),
+        ("Do you handle prevailing-wage projects?",
+         "Yes. We have certified payroll and prevailing-wage experience under Minnesota statutes 177.41-177.44, with weekly reporting and IC-134 closeout affidavits."),
+        ("How far out are you booking?",
+         "It varies by season — spring and summer crews book out furthest. Check the banner at the top of the site for current availability, or send your project through the contact form and we'll tell you exactly what our lead time looks like for your start date."),
+        ("Do you supply materials or labor only?",
+         "Both models. We run labor-only packages where the GC supplies the lumber package, and full labor-plus-material scopes. Turn-key packages add sheathing, weather barrier, and window installation under the same subcontract."),
+        ("Who will actually be on my jobsite?",
+         "Our own crews — we don't broker your frame to whoever's cheapest this month. Multi-family crews run 12+ carpenters with a working foreman on site for the duration, and that crew commitment is written into our subcontracts."),
+    ]
+    import json as _json
+    faq_schema_items = ",\n".join(f"""        {{
+          "@type": "Question",
+          "name": {_json.dumps(q)},
+          "acceptedAnswer": {{ "@type": "Answer", "text": {_json.dumps(a)} }}
+        }}""" for q, a in faqs)
+    schema = f"""    {{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+{faq_schema_items}
+      ]
+    }}"""
+    LINKS = {
+        "contact page": '<a href="/contact.html" style="color:var(--primary)">contact page</a>',
+        "framing cost calculator": '<a href="/estimate.html" style="color:var(--primary)">framing cost calculator</a>',
+        "estimate calculator": '<a href="/estimate.html" style="color:var(--primary)">estimate calculator</a>',
+        "For GCs page": '<a href="/for-gcs.html" style="color:var(--primary)">For GCs page</a>',
+        "Rogers Senior Living & Senior Center": '<a href="/projects/rogers-senior-living.html" style="color:var(--primary)">Rogers Senior Living &amp; Senior Center</a>',
+    }
+    cards = []
+    for i, (q, a) in enumerate(faqs, 1):
+        a_html = a
+        for k, v in LINKS.items():
+            a_html = a_html.replace(k, v, 1)
+        cards.append(f"""                <div class="city-why-card">
+                    <h3>{q}</h3>
+                    <p>{a_html}</p>
+                </div>""")
+    body = hero("STRAIGHT ANSWERS",
+                'Frequently Asked <span class="text-accent">Questions</span>',
+                "The questions GCs, developers, and homeowners ask us most — answered the way we'd answer them on the phone.") + f"""
+    <section class="section section-city-why">
+        <div class="container">
+            <div class="city-why-grid">
+{chr(10).join(cards)}
+            </div>
+        </div>
+    </section>""" + CTA_BAND
+    write("faq.html", head("FAQ — Framing Costs, Coverage, Scheduling | Edge Enterprise LLC",
+                           "Answers to the questions we hear most: framing costs per square foot, service areas, winter framing, prevailing wage, labor-only vs turn-key, and how to get a quote.",
+                           "faq.html", schema) + NAV + body + FOOTER)
+
+
 if __name__ == "__main__":
+    build_faq()
     build_for_gcs()
     build_estimate()
     build_rogers_case()
