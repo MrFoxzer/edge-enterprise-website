@@ -27,7 +27,6 @@ NAV = """
                 <a href="/index.html#service-areas" class="nav-link">Service Areas</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/careers.html" class="nav-link">Careers</a>
-                <a href="tel:+13202172691" class="nav-link nav-phone">(320) 217-2691</a>
                 <a href="/contact.html" class="nav-link nav-link-cta">Get a Quote</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -64,7 +63,6 @@ FOOTER = """
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
-                    <a href="tel:+13202172691">(320) 217-2691</a>
                     <a href="mailto:rtrigueros@edgeenterprise.net">rtrigueros@edgeenterprise.net</a>
                     <a href="/contact.html">Send a message</a>
                     <span>15763 221st Ave, Long Prairie, MN 56347</span>
@@ -78,10 +76,9 @@ FOOTER = """
         </div>
     </footer>
     <div class="mobile-call-bar">
-        <a href="tel:+13202172691" class="mcb-call">Call (320) 217-2691</a>
-        <a href="/contact.html" class="mcb-quote">Free Estimate</a>
+        <a href="/contact.html" class="mcb-call">Get a Free Estimate — We'll Call You Back</a>
     </div>
-    <script src="/script.js?v=nc3"></script>
+    <script src="/script.js?v=nc4"></script>
 </body>
 </html>"""
 
@@ -111,7 +108,7 @@ def head(title, desc, canon, schema="", extra_head=""):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=nc3">{extra_head}{schema_tag}
+    <link rel="stylesheet" href="/styles.css?v=nc4">{extra_head}{schema_tag}
 </head>
 <body>"""
 
@@ -341,14 +338,13 @@ def build_contact():
                         <button type="submit" class="btn btn-primary btn-large"><span>Send Message</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
-                        <p style="margin-top:14px;color:var(--gray-light);font-size:14px">We respond within 1 business day &mdash; or call <a href="tel:+13202172691" style="color:var(--primary)">(320) 217-2691</a> for same-day answers.</p>
+                        <p style="margin-top:14px;color:var(--gray-light);font-size:14px">We respond within 1 business day with a call or email back from Jacob or Ramon directly.</p>
                     </form>
                 </div>
                 <aside class="city-context-side">
                     <div class="city-spec-card">
                         <h3>Reach Us Directly</h3>
                         <ul>
-                            <li><strong>Phone</strong><span>(320) 217-2691</span></li>
                             <li><strong>Headquarters</strong><span>Long Prairie, MN</span></li>
                             <li><strong>Satellite</strong><span>Horace, ND</span></li>
                             <li><strong>Response time</strong><span>Within 1 business day</span></li>
@@ -360,12 +356,12 @@ def build_contact():
         </div>
     </section>"""
     write("contact.html", head("Contact Us | Free Framing Estimates | Edge Enterprise LLC",
-                               "Contact Edge Enterprise LLC for commercial framing, multi-family, and finished carpentry estimates in MN, ND, WI & MT. Call (320) 217-2691 or send your plans.",
+                               "Contact Edge Enterprise LLC for commercial framing, multi-family, and finished carpentry estimates in MN, ND, WI & MT. Send your plans through our form and one of us will call or email you back within one business day.",
                                "contact.html", schema) + NAV + body + FOOTER)
 
     # thank-you + application-received pages
     for fname, title, msg in [
-        ("thank-you.html", "Message Received", "Thanks for reaching out — your message is in our inbox and we'll get back to you within one business day. Need it sooner? Call (320) 217-2691."),
+        ("thank-you.html", "Message Received", "Thanks for reaching out — your message is in our inbox and we'll get back to you within one business day. One of us will call or email you back personally."),
         ("application-received.html", "Application Received", "Thanks for applying to Edge Enterprise. We review every application and will contact you about next steps."),
     ]:
         body = hero("THANK YOU", f'{title.split()[0]} <span class="text-accent">{" ".join(title.split()[1:])}</span>', msg,

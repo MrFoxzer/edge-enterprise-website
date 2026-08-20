@@ -477,7 +477,7 @@ def head_block(title, desc, canon_path, depth, schema_json):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{up}styles.css?v=nc3">
+    <link rel="stylesheet" href="{up}styles.css?v=nc4">
     <script type="application/ld+json">
 {schema_json}
     </script>
@@ -501,7 +501,6 @@ def nav_block(depth):
                 <a href="/index.html#service-areas" class="nav-link">Service Areas</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/careers.html" class="nav-link">Careers</a>
-                <a href="tel:+13202172691" class="nav-link nav-phone">(320) 217-2691</a>
                 <a href="/contact.html" class="nav-link nav-link-cta">Get a Quote</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -541,7 +540,6 @@ def footer_block(depth):
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
-                    <a href="tel:+13202172691">(320) 217-2691</a>
                     <a href="mailto:rtrigueros@edgeenterprise.net">rtrigueros@edgeenterprise.net</a>
                     <a href="/contact.html">Send a message</a>
                     <span>15763 221st Ave, Long Prairie, MN 56347</span>
@@ -555,10 +553,9 @@ def footer_block(depth):
         </div>
     </footer>
     <div class="mobile-call-bar">
-        <a href="tel:+13202172691" class="mcb-call">Call (320) 217-2691</a>
-        <a href="/contact.html" class="mcb-quote">Free Estimate</a>
+        <a href="/contact.html" class="mcb-call">Get a Free Estimate — We'll Call You Back</a>
     </div>
-    <script src="{up}script.js?v=nc3"></script>
+    <script src="{up}script.js?v=nc4"></script>
 </body>
 </html>"""
 
@@ -698,7 +695,6 @@ def build_service_city_page(svc, city, cities_by_state):
         "name": "{name}",
         "containedInPlace": {{ "@type": "AdministrativeArea", "name": "{state}" }}
       }},
-      "telephone": "+13202172691",
       "address": {{ "@type": "PostalAddress", "streetAddress": "15763 221st Ave", "addressLocality": "Long Prairie", "addressRegion": "MN", "postalCode": "56347", "addressCountry": "US" }},
       "makesOffer": {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "{svc['name']}", "areaServed": "{name}, {st_up}" }} }}
     }},
@@ -844,7 +840,6 @@ def build_city_hub_page(city, cities_by_state):
         "name": "{name}",
         "containedInPlace": {{ "@type": "AdministrativeArea", "name": "{state}" }}
       }},
-      "telephone": "+13202172691",
       "address": {{ "@type": "PostalAddress", "streetAddress": "15763 221st Ave", "addressLocality": "Long Prairie", "addressRegion": "MN", "postalCode": "56347", "addressCountry": "US" }}
     }},
 {breadcrumb_schema([("Home", BASE + "/"), (state, f"{BASE}/locations/{state_slug}.html"), (f"{name}, {st_up}", f"{BASE}/{canon}")])}]"""

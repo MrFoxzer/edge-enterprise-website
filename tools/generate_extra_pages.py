@@ -38,7 +38,6 @@ def build_for_gcs():
                             <li><strong>Units framed</strong><span>1,000+</span></li>
                             <li><strong>Markets</strong><span>MN · ND · WI · MT</span></li>
                             <li><strong>Bid response</strong><span>24 hours</span></li>
-                            <li><strong>Phone</strong><span><a href="tel:+13202172691" style="color:var(--primary)">(320) 217-2691</a></span></li>
                             <li><strong>Email</strong><span><a href="mailto:rtrigueros@edgeenterprise.net" style="color:var(--primary)">rtrigueros@…</a></span></li>
                         </ul>
                     </div>
@@ -125,7 +124,6 @@ def build_estimate():
                         <h3>Turn It Into a Real Number</h3>
                         <ul>
                             <li><strong>Send plans</strong><span><a href="/contact.html" style="color:var(--primary)">Free line-item quote →</a></span></li>
-                            <li><strong>Call</strong><span><a href="tel:+13202172691" style="color:var(--primary)">(320) 217-2691</a></span></li>
                             <li><strong>How we price</strong><span><a href="/blog/commercial-framing-cost-guide.html" style="color:var(--primary)">2026 cost guide →</a></span></li>
                         </ul>
                     </div>

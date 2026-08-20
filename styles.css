@@ -1981,8 +1981,17 @@ body.cursor-hover .cursor-ring {
     body { padding-bottom: 52px; }
 }
 
-/* Crew availability banner */
-.avail-banner { display: none; background: var(--primary); color: #0A0A0A; text-align: center;
-    padding: 9px 16px; font-weight: 700; font-size: .92rem; }
-.avail-banner a { color: #0A0A0A; text-decoration: underline; }
-.avail-banner.on { display: block; }
+/* Crew availability banner: slim fixed strip above the nav */
+.avail-banner { display: none; }
+.avail-banner.on { display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+    align-items: center; justify-content: center; gap: 14px;
+    background: var(--primary); color: #0A0A0A;
+    padding: 6px 16px; font-weight: 600; font-size: .8rem; letter-spacing: .02em;
+    white-space: nowrap; overflow: hidden; }
+.avail-banner .ab-msg { overflow: hidden; text-overflow: ellipsis; }
+.avail-banner .ab-cta { color: #0A0A0A; font-weight: 800; text-decoration: underline;
+    text-underline-offset: 2px; flex-shrink: 0; }
+@media (max-width: 640px) {
+    .avail-banner .ab-lead { display: none; }
+    .avail-banner.on { font-size: .72rem; gap: 8px; }
+}

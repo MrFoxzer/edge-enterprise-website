@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     contactForm.reset();
                 }, 3000);
             })
-            .catch(() => { btn.innerHTML = '<span>Error — call (320) 217-2691</span>'; btn.disabled = false; });
+            .catch(() => { btn.innerHTML = '<span>Error — please try again or email us</span>'; btn.disabled = false; });
         });
     }
 
@@ -327,8 +327,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!nav) return;
         var bar = document.createElement('div');
         bar.className = 'avail-banner on';
-        bar.innerHTML = a.message + (a.leadTime ? ' &nbsp;·&nbsp; Mobilization lead time: ' + a.leadTime : '') +
-            ' &nbsp;·&nbsp; <a href="/contact.html">Lock in your slot</a>';
-        nav.insertAdjacentElement('afterend', bar);
+        bar.innerHTML = '<span class="ab-msg">' + a.message +
+            (a.leadTime ? '<span class="ab-lead"> · Lead time: ' + a.leadTime + '</span>' : '') +
+            '</span><a href="/contact.html" class="ab-cta">Book your slot →</a>';
+        document.body.prepend(bar);
+        var place = function () {
+            var h = bar.offsetHeight;
+            nav.style.top = h + 'px';
+            document.body.style.setProperty('--ab-h', h + 'px');
+        };
+        place();
+        window.addEventListener('resize', place);
     }).catch(function(){});
 })();
