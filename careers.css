@@ -61,3 +61,8 @@ input[type="file"] { padding: 9px; }
 :focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
 @media (max-width: 760px) { .content, .site-nav { width: min(100% - 32px, 1120px); }.hero { min-height: 570px; }.hero-image { background: linear-gradient(rgba(10,10,10,.82), rgba(10,10,10,.8)), url("projects/45th-street-comeland-1.jpg") center/cover; }.section { padding: 64px 0; }.roles-grid, .application-layout, .process ol { grid-template-columns: 1fr; }.process li { min-height: 92px; }.site-footer .content { align-items: flex-start; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Robust résumé picker: label-activated, native input kept accessible */
+.file-input-hidden { position: absolute; width: 1px; height: 1px; min-height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
+.file-trigger { cursor: pointer; margin: 4px 12px 4px 0; }
+#resume-chosen { color: var(--cream-dark); font-weight: 700; }

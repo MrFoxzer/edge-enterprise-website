@@ -39,7 +39,11 @@
                 return result;
             };
 
-            input.addEventListener("change", validateInput);
+            const chosen = document.querySelector("#resume-chosen");
+            input.addEventListener("change", function () {
+                if (chosen) chosen.textContent = (input.files && input.files[0]) ? input.files[0].name : "No file selected yet";
+                validateInput();
+            });
             input.addEventListener("invalid", validateInput);
             form.addEventListener("submit", function (event) {
                 const result = validateInput();

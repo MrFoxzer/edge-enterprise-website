@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="careers.css?v=nc1">
+    <link rel="stylesheet" href="careers.css?v=nc2">
     <link rel="image_src" href="hiring-social-card.png">
 </head>
 <body class="careers-page">
@@ -116,7 +116,7 @@
                     <div class="field"><label for="applicant-role">Role <span aria-hidden="true">*</span></label><select id="applicant-role" name="role" required><option value="">Select a role</option><option>Framing Carpenter</option><option>Framing Laborer</option></select></div>
                     <div class="field"><label for="experience-years">Years of framing experience <span aria-hidden="true">*</span></label><select id="experience-years" name="experience-years" required><option value="">Select experience</option><option value="Less than 1 year">Less than 1 year</option><option value="1–2 years">1–2 years</option><option value="3–5 years">3–5 years</option><option value="6+ years">6+ years</option></select></div>
                     <div class="field"><label for="work-summary">Brief work summary <span aria-hidden="true">*</span></label><textarea id="work-summary" name="work-summary" rows="5" required></textarea></div>
-                    <div class="field"><label for="resume">Résumé (PDF, DOC, or DOCX; 5 MB maximum) <span aria-hidden="true">*</span></label><input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required aria-describedby="resume-help resume-error"><span id="resume-help">Upload one résumé file.</span></div>
+                    <div class="field"><label for="resume">Résumé (PDF, DOC, or DOCX; 5 MB maximum) <span aria-hidden="true">*</span></label><input id="resume" name="resume" type="file" class="file-input-hidden" accept=".pdf,.doc,.docx" required aria-describedby="resume-help resume-error"><label for="resume" class="button button-primary file-trigger">Choose Résumé File</label><span id="resume-chosen" aria-live="polite">No file selected yet</span><br><span id="resume-help">Upload one résumé file.</span></div>
                     <p class="form-error" id="resume-error" role="alert" aria-live="assertive"></p>
                     <div class="consent"><input id="application-consent" name="application-consent" type="checkbox" value="I consent to Edge Enterprise reviewing my application." required><label for="application-consent">I consent to Edge Enterprise reviewing my application. <span aria-hidden="true">*</span></label></div>
                     <button class="button button-primary" type="submit">Submit Application</button>
@@ -132,6 +132,6 @@
     </main>
 
     <footer class="site-footer"><div class="content"><img src="logo.png" alt="Edge Enterprise LLC"><p>© 2026 Edge Enterprise LLC. All rights reserved.</p></div></footer>
-    <script src="careers.js"></script>
+    <script src="careers.js?v=nc2"></script>
 </body>
 </html>
