@@ -471,10 +471,13 @@ def head_block(title, desc, canon_path, depth, schema_json):
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{desc}">
     <meta property="og:site_name" content="Edge Enterprise LLC">
+    <meta property="og:image" content="{BASE}/og-card.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{BASE}/og-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{up}styles.css?v=nc1">
+    <link rel="stylesheet" href="{up}styles.css?v=nc3">
     <script type="application/ld+json">
 {schema_json}
     </script>
@@ -498,6 +501,7 @@ def nav_block(depth):
                 <a href="/index.html#service-areas" class="nav-link">Service Areas</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/careers.html" class="nav-link">Careers</a>
+                <a href="tel:+13202172691" class="nav-link nav-phone">(320) 217-2691</a>
                 <a href="/contact.html" class="nav-link nav-link-cta">Get a Quote</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -524,6 +528,8 @@ def footer_block(depth):
                     <a href="/projects.html">Portfolio</a>
                     <a href="/blog.html">Blog</a>
                     <a href="/careers.html">Careers</a>
+                    <a href="/for-gcs.html">For GCs</a>
+                    <a href="/estimate.html">Instant Estimate</a>
                     <a href="/contact.html">Contact</a>
                 </div>
                 <div class="footer-links">
@@ -535,18 +541,24 @@ def footer_block(depth):
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
+                    <a href="tel:+13202172691">(320) 217-2691</a>
+                    <a href="mailto:rtrigueros@edgeenterprise.net">rtrigueros@edgeenterprise.net</a>
                     <a href="/contact.html">Send a message</a>
-                    <span>Long Prairie, MN</span>
+                    <span>15763 221st Ave, Long Prairie, MN 56347</span>
                     <span>Horace, ND</span>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Edge Enterprise LLC. All rights reserved.</p>
-                <p>Licensed &amp; Insured · Serving MN, ND, MT, WI</p>
+                <p>Licensed &amp; Insured · HQ Long Prairie, MN · Crews serving MN, ND, WI &amp; MT · COI available on request</p>
             </div>
         </div>
     </footer>
-    <script src="{up}script.js?v=nc1"></script>
+    <div class="mobile-call-bar">
+        <a href="tel:+13202172691" class="mcb-call">Call (320) 217-2691</a>
+        <a href="/contact.html" class="mcb-quote">Free Estimate</a>
+    </div>
+    <script src="{up}script.js?v=nc3"></script>
 </body>
 </html>"""
 
@@ -560,7 +572,7 @@ def cta_block(depth, city_name, svc_short=None):
             <div class="cta-block">
                 <h2 class="cta-title">Planning a {what.title()} Project in <span class="text-accent">{city_name}?</span></h2>
                 <p class="cta-text">Tell us about your build. We'll get back to you with a clear, honest scope and estimate — typically within one business day.</p>
-                <a href="{up}index.html#contact" class="btn btn-primary btn-large">
+                <a href="/contact.html" class="btn btn-primary btn-large">
                     <span>Request a Free Estimate</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -686,7 +698,8 @@ def build_service_city_page(svc, city, cities_by_state):
         "name": "{name}",
         "containedInPlace": {{ "@type": "AdministrativeArea", "name": "{state}" }}
       }},
-      "address": {{ "@type": "PostalAddress", "addressLocality": "Long Prairie", "addressRegion": "MN", "addressCountry": "US" }},
+      "telephone": "+13202172691",
+      "address": {{ "@type": "PostalAddress", "streetAddress": "15763 221st Ave", "addressLocality": "Long Prairie", "addressRegion": "MN", "postalCode": "56347", "addressCountry": "US" }},
       "makesOffer": {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "{svc['name']}", "areaServed": "{name}, {st_up}" }} }}
     }},
 {breadcrumb_schema([("Home", BASE + "/"), (state, f"{BASE}/locations/{state_slug}.html"), (f"{name}, {st_up}", f"{BASE}/locations/{fname}"), (svc['name'], f"{BASE}/{canon}")])},
@@ -714,7 +727,7 @@ def build_service_city_page(svc, city, cities_by_state):
                     <span><strong>From Edge HQ:</strong> {dt}</span>
                 </div>
                 <div class="city-hero-ctas">
-                    <a href="../../index.html#contact" class="btn btn-primary">
+                    <a href="/contact.html" class="btn btn-primary">
                         <span>Get a Free Estimate</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -831,7 +844,8 @@ def build_city_hub_page(city, cities_by_state):
         "name": "{name}",
         "containedInPlace": {{ "@type": "AdministrativeArea", "name": "{state}" }}
       }},
-      "address": {{ "@type": "PostalAddress", "addressLocality": "Long Prairie", "addressRegion": "MN", "addressCountry": "US" }}
+      "telephone": "+13202172691",
+      "address": {{ "@type": "PostalAddress", "streetAddress": "15763 221st Ave", "addressLocality": "Long Prairie", "addressRegion": "MN", "postalCode": "56347", "addressCountry": "US" }}
     }},
 {breadcrumb_schema([("Home", BASE + "/"), (state, f"{BASE}/locations/{state_slug}.html"), (f"{name}, {st_up}", f"{BASE}/{canon}")])}]"""
 
@@ -851,7 +865,7 @@ def build_city_hub_page(city, cities_by_state):
                     <span><strong>From Edge HQ:</strong> {dt}</span>
                 </div>
                 <div class="city-hero-ctas">
-                    <a href="../index.html#contact" class="btn btn-primary">
+                    <a href="/contact.html" class="btn btn-primary">
                         <span>Get a Free Estimate</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -948,7 +962,7 @@ def build_state_hub(st, cities_by_state):
                 <h1 class="city-hero-title">Framing Across <span class="text-accent">{state}</span></h1>
                 <p class="city-hero-sub">{blurb}</p>
                 <div class="city-hero-ctas">
-                    <a href="../index.html#contact" class="btn btn-primary">
+                    <a href="/contact.html" class="btn btn-primary">
                         <span>Get a Free Estimate</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1025,7 +1039,7 @@ def build_service_hub(svc, cities_by_state):
                 <h1 class="city-hero-title"><span class="text-accent">{svc['name']}</span> Across the Upper Midwest &amp; Mountain West</h1>
                 <p class="city-hero-sub">{svc['desc']} Choose your city below for local specs, FAQs, and details.</p>
                 <div class="city-hero-ctas">
-                    <a href="../../index.html#contact" class="btn btn-primary">
+                    <a href="/contact.html" class="btn btn-primary">
                         <span>Get a Free Estimate</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -1144,7 +1158,9 @@ def main():
             ("blog/what-is-turnkey-framing.html", "0.7"),
             ("blog/multi-family-framing-schedule.html", "0.7"),
             ("blog/zip-system-vs-tyvek-housewrap.html", "0.7"),
-            ("blog/how-to-vet-a-framing-subcontractor.html", "0.7")]
+            ("blog/how-to-vet-a-framing-subcontractor.html", "0.7"),
+            ("for-gcs.html", "0.8"), ("estimate.html", "0.8"),
+            ("projects/rogers-senior-living.html", "0.8")]
     urls = []
     seen = set()
     for path, pr in core + sorted(pages):

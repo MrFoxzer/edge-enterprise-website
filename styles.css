@@ -1965,3 +1965,24 @@ body.cursor-hover .cursor-ring {
     color: var(--primary) !important;
     font-weight: 600;
 }
+
+/* Nav phone link */
+.nav-phone { font-weight: 700; color: var(--primary) !important; white-space: nowrap; }
+
+/* Sticky mobile call bar */
+.mobile-call-bar { display: none; }
+@media (max-width: 768px) {
+    .mobile-call-bar { display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+        box-shadow: 0 -4px 20px rgba(0,0,0,.45); }
+    .mobile-call-bar a { flex: 1; text-align: center; padding: 15px 8px; font-weight: 800;
+        font-size: .95rem; text-decoration: none; letter-spacing: .02em; }
+    .mcb-call { background: var(--primary); color: #0A0A0A; }
+    .mcb-quote { background: #0A0A0A; color: var(--light); border-top: 1px solid var(--dark-4); }
+    body { padding-bottom: 52px; }
+}
+
+/* Crew availability banner */
+.avail-banner { display: none; background: var(--primary); color: #0A0A0A; text-align: center;
+    padding: 9px 16px; font-weight: 700; font-size: .92rem; }
+.avail-banner a { color: #0A0A0A; text-decoration: underline; }
+.avail-banner.on { display: block; }

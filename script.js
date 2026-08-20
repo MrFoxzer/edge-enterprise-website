@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fire after short delay regardless of load state
-    setTimeout(startSite, preloader ? 2500 : 0);
+    setTimeout(startSite, preloader ? 400 : 0);
 
     window.addEventListener('load', () => {
-        setTimeout(startSite, preloader ? 1500 : 0);
+        setTimeout(startSite, preloader ? 300 : 0);
     });
 
     // ---- Custom Cursor ----
@@ -317,3 +317,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Skipped word-split to preserve inner HTML spans
 
 });
+
+
+// Crew availability banner (sitewide) - edit availability.json to update
+(function () {
+    fetch('/availability.json').then(r => r.ok ? r.json() : null).then(a => {
+        if (!a || !a.message) return;
+        var nav = document.getElementById('mainNav');
+        if (!nav) return;
+        var bar = document.createElement('div');
+        bar.className = 'avail-banner on';
+        bar.innerHTML = a.message + (a.leadTime ? ' &nbsp;·&nbsp; Mobilization lead time: ' + a.leadTime : '') +
+            ' &nbsp;·&nbsp; <a href="/contact.html">Lock in your slot</a>';
+        nav.insertAdjacentElement('afterend', bar);
+    }).catch(function(){});
+})();

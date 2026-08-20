@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framing Cost Calculator — Instant Ballpark | Edge Enterprise LLC</title>
+    <meta name="description" content="Free instant ballpark for commercial, multi-family, and custom framing costs — square footage x project type x wood or steel. Then send plans for a firm line-item quote.">
+    <link rel="canonical" href="https://edgeenterprise.net/estimate.html">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://edgeenterprise.net/estimate.html">
+    <meta property="og:title" content="Framing Cost Calculator — Instant Ballpark | Edge Enterprise LLC">
+    <meta property="og:description" content="Free instant ballpark for commercial, multi-family, and custom framing costs — square footage x project type x wood or steel. Then send plans for a firm line-item quote.">
+    <meta property="og:site_name" content="Edge Enterprise LLC">
+    <meta property="og:image" content="https://edgeenterprise.net/og-card.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://edgeenterprise.net/og-card.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=nc3">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Framing Cost Ballpark Calculator",
+      "url": "https://edgeenterprise.net/estimate.html",
+      "applicationCategory": "Calculator",
+      "provider": { "@type": "GeneralContractor", "name": "Edge Enterprise LLC" }
+    }
+    </script>
+</head>
+<body>
+    <nav class="nav nav-city" id="mainNav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <span class="nav-logo-text">EDGE <span class="nav-logo-accent">ENTERPRISE</span></span>
+                <img src="/logo-icon.png" alt="" class="nav-icon">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/about.html" class="nav-link">About</a>
+                <a href="/services.html" class="nav-link">Services</a>
+                <a href="/projects.html" class="nav-link">Projects</a>
+                <a href="/index.html#service-areas" class="nav-link">Service Areas</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/careers.html" class="nav-link">Careers</a>
+                <a href="tel:+13202172691" class="nav-link nav-phone">(320) 217-2691</a>
+                <a href="/contact.html" class="nav-link nav-link-cta">Get a Quote</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <section class="city-hero">
+        <div class="city-hero-bg"></div>
+        <div class="container">
+            <div class="city-hero-inner">
+                <span class="section-label">INSTANT BALLPARK</span>
+                <h1 class="city-hero-title">Framing Cost <span class="text-accent">Calculator</span></h1>
+                <p class="city-hero-sub">A 30-second ballpark for budgeting and feasibility — firm numbers still come from your plans.</p>
+                
+            </div>
+        </div>
+    </section>
+    <section class="section section-city-context">
+        <div class="container">
+            <div class="city-context-grid">
+                <div class="city-context-main">
+                    <div class="city-spec-card" style="position:static;max-width:640px">
+                        <h3>Project Inputs</h3>
+                        <div style="display:grid;gap:18px;margin-top:18px">
+                            <label style="display:block">Framed area (square feet)
+                                <input type="number" id="calcSqft" value="20000" min="500" step="500" style="width:100%;margin-top:6px;padding:12px;background:var(--dark);border:1px solid var(--dark-5);color:var(--light);border-radius:8px">
+                            </label>
+                            <label style="display:block">Project type
+                                <select id="calcType" style="width:100%;margin-top:6px;padding:12px;background:var(--dark);border:1px solid var(--dark-5);color:var(--light);border-radius:8px">
+                                    <option value="multi">Multi-family (repetitive units)</option>
+                                    <option value="commercial">Commercial (office/retail/hospitality)</option>
+                                    <option value="custom">Custom home / one-off</option>
+                                </select>
+                            </label>
+                            <label style="display:block">Structure
+                                <select id="calcStruct" style="width:100%;margin-top:6px;padding:12px;background:var(--dark);border:1px solid var(--dark-5);color:var(--light);border-radius:8px">
+                                    <option value="wood">Wood frame</option>
+                                    <option value="steel">Light-gauge steel</option>
+                                    <option value="hybrid">Hybrid wood + steel</option>
+                                </select>
+                            </label>
+                            <label style="display:block">Scope
+                                <select id="calcScope" style="width:100%;margin-top:6px;padding:12px;background:var(--dark);border:1px solid var(--dark-5);color:var(--light);border-radius:8px">
+                                    <option value="labor">Labor only</option>
+                                    <option value="turnkey">Turn-key (labor + sheathing/WRB + windows)</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div id="calcOut" style="margin-top:24px;padding:20px;background:var(--dark);border:1px solid var(--primary);border-radius:12px">
+                            <div style="font-size:13px;letter-spacing:2px;color:var(--gray-light)">BALLPARK RANGE</div>
+                            <div id="calcRange" style="font-size:32px;font-weight:800;color:var(--primary);margin-top:6px">—</div>
+                            <div id="calcPerSf" style="color:var(--gray-light);margin-top:4px">—</div>
+                        </div>
+                        <p style="color:var(--gray);font-size:13px;margin-top:14px">Ballpark only — regional labor rates, height, complexity, and schedule move real numbers. Firm pricing comes from your drawings, free, within a few business days.</p>
+                    </div>
+                </div>
+                <aside class="city-context-side">
+                    <div class="city-spec-card">
+                        <h3>Turn It Into a Real Number</h3>
+                        <ul>
+                            <li><strong>Send plans</strong><span><a href="/contact.html" style="color:var(--primary)">Free line-item quote →</a></span></li>
+                            <li><strong>Call</strong><span><a href="tel:+13202172691" style="color:var(--primary)">(320) 217-2691</a></span></li>
+                            <li><strong>How we price</strong><span><a href="/blog/commercial-framing-cost-guide.html" style="color:var(--primary)">2026 cost guide →</a></span></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+    <script>
+    (function(){
+        var rates = {
+            multi:      { labor: [5.5, 9],  turnkey: [12, 22] },
+            commercial: { labor: [6.5, 11], turnkey: [15, 30] },
+            custom:     { labor: [8, 14],   turnkey: [18, 34] }
+        };
+        var structMult = { wood: 1, steel: 1.18, hybrid: 1.1 };
+        function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+        function calc(){
+            var sf = Math.max(500, parseInt(document.getElementById('calcSqft').value || 0, 10));
+            var t = document.getElementById('calcType').value;
+            var st = document.getElementById('calcStruct').value;
+            var sc = document.getElementById('calcScope').value;
+            var r = rates[t][sc], m = structMult[st];
+            var lo = sf * r[0] * m, hi = sf * r[1] * m;
+            document.getElementById('calcRange').textContent = fmt(lo) + ' – ' + fmt(hi);
+            document.getElementById('calcPerSf').textContent = '$' + (r[0]*m).toFixed(2) + ' – $' + (r[1]*m).toFixed(2) + ' per SF · ' + sf.toLocaleString() + ' SF';
+        }
+        ['calcSqft','calcType','calcStruct','calcScope'].forEach(function(id){
+            document.getElementById(id).addEventListener('input', calc);
+            document.getElementById(id).addEventListener('change', calc);
+        });
+        calc();
+    })();
+    </script>
+    <section class="section section-cta">
+        <div class="container">
+            <div class="cta-block">
+                <h2 class="cta-title">Ready to Talk About Your <span class="text-accent">Project?</span></h2>
+                <p class="cta-text">Tell us about your build. We'll get back to you with a clear, honest scope and estimate — typically within one business day.</p>
+                <a href="/contact.html" class="btn btn-primary btn-large">
+                    <span>Request a Free Estimate</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/logo.png" alt="Edge Enterprise LLC" class="footer-logo">
+                    <p>Professional construction services built on integrity, precision, and excellence. Serving clients nationwide from our Minnesota &amp; North Dakota headquarters.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="/about.html">About Us</a>
+                    <a href="/services.html">Services</a>
+                    <a href="/projects.html">Portfolio</a>
+                    <a href="/blog.html">Blog</a>
+                    <a href="/careers.html">Careers</a>
+                    <a href="/for-gcs.html">For GCs</a>
+                    <a href="/estimate.html">Instant Estimate</a>
+                    <a href="/contact.html">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Service Areas</h4>
+                    <a href="/locations/minnesota.html">Minnesota</a>
+                    <a href="/locations/north-dakota.html">North Dakota</a>
+                    <a href="/locations/wisconsin.html">Wisconsin</a>
+                    <a href="/locations/montana.html">Montana</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+13202172691">(320) 217-2691</a>
+                    <a href="mailto:rtrigueros@edgeenterprise.net">rtrigueros@edgeenterprise.net</a>
+                    <a href="/contact.html">Send a message</a>
+                    <span>15763 221st Ave, Long Prairie, MN 56347</span>
+                    <span>Horace, ND</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Edge Enterprise LLC. All rights reserved.</p>
+                <p>Licensed &amp; Insured · HQ Long Prairie, MN · Crews serving MN, ND, WI &amp; MT · COI available on request</p>
+            </div>
+        </div>
+    </footer>
+    <div class="mobile-call-bar">
+        <a href="tel:+13202172691" class="mcb-call">Call (320) 217-2691</a>
+        <a href="/contact.html" class="mcb-quote">Free Estimate</a>
+    </div>
+    <script src="/script.js?v=nc3"></script>
+</body>
+</html>

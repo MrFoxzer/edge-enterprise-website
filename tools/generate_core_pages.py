@@ -27,6 +27,7 @@ NAV = """
                 <a href="/index.html#service-areas" class="nav-link">Service Areas</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/careers.html" class="nav-link">Careers</a>
+                <a href="tel:+13202172691" class="nav-link nav-phone">(320) 217-2691</a>
                 <a href="/contact.html" class="nav-link nav-link-cta">Get a Quote</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -50,6 +51,8 @@ FOOTER = """
                     <a href="/projects.html">Portfolio</a>
                     <a href="/blog.html">Blog</a>
                     <a href="/careers.html">Careers</a>
+                    <a href="/for-gcs.html">For GCs</a>
+                    <a href="/estimate.html">Instant Estimate</a>
                     <a href="/contact.html">Contact</a>
                 </div>
                 <div class="footer-links">
@@ -61,18 +64,24 @@ FOOTER = """
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
+                    <a href="tel:+13202172691">(320) 217-2691</a>
+                    <a href="mailto:rtrigueros@edgeenterprise.net">rtrigueros@edgeenterprise.net</a>
                     <a href="/contact.html">Send a message</a>
-                    <span>Long Prairie, MN</span>
+                    <span>15763 221st Ave, Long Prairie, MN 56347</span>
                     <span>Horace, ND</span>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Edge Enterprise LLC. All rights reserved.</p>
-                <p>Licensed &amp; Insured · Serving MN, ND, MT, WI</p>
+                <p>Licensed &amp; Insured · HQ Long Prairie, MN · Crews serving MN, ND, WI &amp; MT · COI available on request</p>
             </div>
         </div>
     </footer>
-    <script src="/script.js?v=nc1"></script>
+    <div class="mobile-call-bar">
+        <a href="tel:+13202172691" class="mcb-call">Call (320) 217-2691</a>
+        <a href="/contact.html" class="mcb-quote">Free Estimate</a>
+    </div>
+    <script src="/script.js?v=nc3"></script>
 </body>
 </html>"""
 
@@ -96,10 +105,13 @@ def head(title, desc, canon, schema="", extra_head=""):
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{desc}">
     <meta property="og:site_name" content="Edge Enterprise LLC">
+    <meta property="og:image" content="{BASE}/og-card.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{BASE}/og-card.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=nc1">{extra_head}{schema_tag}
+    <link rel="stylesheet" href="/styles.css?v=nc3">{extra_head}{schema_tag}
 </head>
 <body>"""
 
@@ -284,8 +296,8 @@ def build_contact():
                 <div class="city-context-main">
                     <span class="section-label">SEND A MESSAGE</span>
                     <h2 class="section-title">Request a <span class="text-accent">Free Estimate</span></h2>
-                    <form class="contact-form" name="contact" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" style="margin-top:24px">
-                        <input type="hidden" name="form-name" value="contact">
+                    <form class="contact-form" name="contact-plans" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" style="margin-top:24px">
+                        <input type="hidden" name="form-name" value="contact-plans">
                         <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
                         <div class="form-group">
                             <input type="text" id="formName" name="name" required placeholder=" ">
@@ -303,9 +315,23 @@ def build_contact():
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="formProject" name="project-type" placeholder=" ">
-                            <label for="formProject">Project Type &amp; Location</label>
+                            <input type="text" id="formCompany" name="company" placeholder=" ">
+                            <label for="formCompany">Company (if GC / developer)</label>
                             <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="formProject" name="project-type" placeholder=" ">
+                            <label for="formProject">Project Type &amp; Location (city, state)</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="formBidDue" name="bid-due-date" placeholder=" ">
+                            <label for="formBidDue">Bid Due Date (if bidding)</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group" style="padding-top:8px">
+                            <label style="position:static;display:block;margin-bottom:8px;font-size:14px;color:var(--gray-light)">Attach plans (PDF or ZIP, up to 8&nbsp;MB &mdash; email larger sets to <a href="mailto:rtrigueros@edgeenterprise.net" style="color:var(--primary)">rtrigueros@edgeenterprise.net</a>)</label>
+                            <input type="file" name="plans" accept=".pdf,.zip">
                         </div>
                         <div class="form-group">
                             <textarea id="formMessage" name="message" rows="5" required placeholder=" "></textarea>
@@ -315,6 +341,7 @@ def build_contact():
                         <button type="submit" class="btn btn-primary btn-large"><span>Send Message</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
+                        <p style="margin-top:14px;color:var(--gray-light);font-size:14px">We respond within 1 business day &mdash; or call <a href="tel:+13202172691" style="color:var(--primary)">(320) 217-2691</a> for same-day answers.</p>
                     </form>
                 </div>
                 <aside class="city-context-side">
@@ -338,7 +365,7 @@ def build_contact():
 
     # thank-you + application-received pages
     for fname, title, msg in [
-        ("thank-you.html", "Message Received", "Thanks for reaching out — your message is in our inbox and we'll get back to you within one business day."),
+        ("thank-you.html", "Message Received", "Thanks for reaching out — your message is in our inbox and we'll get back to you within one business day. Need it sooner? Call (320) 217-2691."),
         ("application-received.html", "Application Received", "Thanks for applying to Edge Enterprise. We review every application and will contact you about next steps."),
     ]:
         body = hero("THANK YOU", f'{title.split()[0]} <span class="text-accent">{" ".join(title.split()[1:])}</span>', msg,
