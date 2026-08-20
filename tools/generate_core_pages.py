@@ -631,4 +631,4 @@ if __name__ == "__main__":
     build_services()
     build_projects()
     build_contact()
-    build_blog()
+    # blog rendered by generate_blog.py from blog-data/*.json
