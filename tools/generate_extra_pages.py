@@ -38,7 +38,7 @@ def build_for_gcs():
                             <li><strong>Units framed</strong><span>1,000+</span></li>
                             <li><strong>Markets</strong><span>MN · ND · WI · MT</span></li>
                             <li><strong>Bid response</strong><span>24 hours</span></li>
-                            <li><strong>Email</strong><span><a href="mailto:rtrigueros@edgeenterprise.net" style="color:var(--primary)">rtrigueros@…</a></span></li>
+                            <li><strong>Email</strong><span><a href="mailto:Office@edgeenterprise.net" style="color:var(--primary)">rtrigueros@…</a></span></li>
                         </ul>
                     </div>
                 </aside>

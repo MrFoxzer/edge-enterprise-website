@@ -64,7 +64,7 @@ FOOTER = """
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
-                    <a href="mailto:rtrigueros@edgeenterprise.net">rtrigueros@edgeenterprise.net</a>
+                    <a href="mailto:Office@edgeenterprise.net">Office@edgeenterprise.net</a>
                     <a href="/contact.html">Send a message</a>
                     <span>15763 221st Ave, Long Prairie, MN 56347</span>
                     <span>Horace, ND</span>
@@ -329,7 +329,7 @@ def build_contact():
                             <div class="form-line"></div>
                         </div>
                         <div class="form-group" style="padding-top:8px">
-                            <label style="position:static;display:block;margin-bottom:8px;font-size:14px;color:var(--gray-light)">Attach plans (PDF or ZIP, up to 8&nbsp;MB &mdash; email larger sets to <a href="mailto:rtrigueros@edgeenterprise.net" style="color:var(--primary)">rtrigueros@edgeenterprise.net</a>)</label>
+                            <label style="position:static;display:block;margin-bottom:8px;font-size:14px;color:var(--gray-light)">Attach plans (PDF or ZIP, up to 8&nbsp;MB &mdash; email larger sets to <a href="mailto:Office@edgeenterprise.net" style="color:var(--primary)">Office@edgeenterprise.net</a>)</label>
                             <input type="file" name="plans" accept=".pdf,.zip">
                         </div>
                         <div class="form-group">
