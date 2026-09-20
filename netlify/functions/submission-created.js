@@ -2,10 +2,29 @@
 // employment-application). Delivers the lead by email (via ntfy.sh's email
 // bridge) and to the private ntfy push topic, independent of Netlify's
 // built-in notification emails.
-const NTFY_TOPIC = "edge-leads-f3b7085b406399e1";
+//
+// SECURITY: an ntfy.sh topic is a bearer secret, not an identifier. ntfy.sh
+// has no read authentication on free topics — anyone who learns the string can
+// subscribe to https://ntfy.sh/<topic> and silently receive every lead
+// forever. This repository is PUBLIC, so the topic must never appear in
+// source, in a fallback, in a comment, or in a committed config file.
+//
+// Set NTFY_TOPIC in Netlify: Site configuration -> Environment variables.
+// There is deliberately NO fallback: if the variable is missing we skip the
+// push and log loudly, rather than leaking or guessing a topic.
+const NTFY_TOPIC = process.env.NTFY_TOPIC;
 
 exports.handler = async (event) => {
   try {
+    if (!NTFY_TOPIC) {
+      console.error(
+        "NTFY_TOPIC is not set — push notification skipped. " +
+        "Set it in Netlify: Site configuration -> Environment variables. " +
+        "The submission itself is still recorded in Netlify Forms."
+      );
+      return { statusCode: 200, body: "notify-skipped-no-topic" };
+    }
+
     const { payload } = JSON.parse(event.body);
     const form = payload.form_name || "unknown-form";
     const d = payload.data || {};

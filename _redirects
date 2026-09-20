@@ -1,0 +1,7 @@
+# SECURITY: the repo root is the served site, so netlify/functions/*.js was
+# readable as static source at /netlify/functions/<name>.js by anyone on the
+# internet. Functions run at /.netlify/functions/<name> (leading dot) and are
+# unaffected. Verified 2026-09-19: that path returned 200 with full source.
+/netlify/*        /index.html   404!
+/package.json     /index.html   404!
+/package-lock.json /index.html  404!
