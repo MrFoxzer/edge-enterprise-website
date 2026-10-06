@@ -9,16 +9,20 @@
         pdf: new Set(["application/pdf"]),
         doc: new Set(["application/msword"]),
         docx: new Set(["application/vnd.openxmlformats-officedocument.wordprocessingml.document"]),
+        jpg: new Set(["image/jpeg"]),
+        jpeg: new Set(["image/jpeg"]),
+        png: new Set(["image/png"]),
+        heic: new Set(["image/heic", "image/heif"]),
     };
 
     function validateResume(file) {
-        if (!file) return { valid: false, error: "Please attach your résumé." };
+        if (!file) return { valid: true, error: "" }; // résumé is optional
         if (file.size <= 0) return { valid: false, error: "Résumé file cannot be empty." };
         if (file.size > MAX_RESUME_SIZE) return { valid: false, error: "Résumé must be 5 MB or smaller." };
         const extension = (file.name || "").split(".").pop().toLowerCase();
         const expectedMimeTypes = allowedMimeTypesByExtension[extension];
         const allowed = expectedMimeTypes && (!file.type || expectedMimeTypes.has(file.type));
-        return allowed ? { valid: true, error: "" } : { valid: false, error: "Upload a PDF, DOC, or DOCX résumé." };
+        return allowed ? { valid: true, error: "" } : { valid: false, error: "Upload a PDF, Word file, or photo (JPG, PNG, HEIC)." };
     }
 
     function setResumeError(errorRegion, input, result) {
