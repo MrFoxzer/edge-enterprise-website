@@ -73,6 +73,7 @@ FOOTER = """
             <div class="footer-bottom">
                 <p>&copy; 2026 Edge Enterprise LLC. All rights reserved.</p>
                 <p>Licensed &amp; Insured · HQ Long Prairie, MN · Crews serving MN, ND, WI &amp; MT · COI available on request</p>            </div>
+            <div style="text-align:center;padding:16px 0 0;font-size:12px;color:var(--gray);">Designed &amp; Built by <a href="https://stylemarking.com" target="_blank" rel="noopener" style="color:var(--primary);text-decoration:none;font-weight:500;">StyleMarking.com</a></div>
         </div>
     </footer>
     <div class="mobile-call-bar">
