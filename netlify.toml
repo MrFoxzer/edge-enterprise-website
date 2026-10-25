@@ -1,0 +1,14 @@
+# Publish a filtered copy of the site, not the repo root. The root also holds
+# internal files (tools/ page generators, blog-data/ source, package.json,
+# function source), and Netlify serves paths case-insensitively while _redirects
+# rules match case-sensitively, so 404! rules alone left /Tools/... and
+# /Netlify/functions/... readable (found 2026-10-25).
+# netlify/build-site.cjs hard-links every website file into _site/ and leaves
+# the internal ones out. If it fails, Netlify keeps the current live deploy.
+# _headers and _redirects still live at the repo root and are copied into _site/.
+[build]
+  command = "node netlify/build-site.cjs"
+  publish = "_site"
+
+[functions]
+  directory = "netlify/functions"
