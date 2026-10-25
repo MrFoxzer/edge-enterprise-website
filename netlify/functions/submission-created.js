@@ -14,12 +14,15 @@
 // push and log loudly, rather than leaking or guessing a topic.
 const NTFY_TOPIC = process.env.NTFY_TOPIC;
 
-// Lead guard (_lib/lead-guard.js, shared by all of Jacob's sites): bots that
-// never ran the page's JavaScript (no `human` token from js/human-check.js),
-// foreign-language runs, "I wanted to know your price", adult/casino/SEO spam.
-// Anything it does not deliver gets no phone push; the submission itself is
-// still in the Netlify Forms dashboard for review.
-const { triage } = require("./_lib/lead-guard.js");
+// Lead guard v2 (_lib/lead-guard.js + js/human-check.js, the same pair on all
+// of Jacob's sites). A post with no `human` token (a bot that never ran the
+// page's JavaScript) is dropped on any spam sign. A visitor who passed the
+// check is never dropped over wording a real customer could write: pitches,
+// links and odd phones only make it quiet. Only the honeypot, adult/drug spam
+// and a non-English lead drop a verified post. Only 'deliver' gets the phone
+// push; every submission, quiet ones included, stays in the Netlify Forms
+// dashboard for review.
+const { triage, language, normalize } = require("./_lib/lead-guard.js");
 
 // Fields that are not the visitor's own words (Netlify metadata, the honeypot,
 // the token, fixed values, file uploads), or are passed to triage() by name.
@@ -28,23 +31,39 @@ const NOT_TEXT = new Set([
   "ip", "user_agent", "referrer", "subject", "application-consent", "language", "plans", "resume",
 ]);
 
+// Job applications are never dropped over their language (Minnesota Human
+// Rights Act: national origin in hiring). A non-English one is quiet: no push,
+// still in the dashboard. The lead forms drop non-English (Jacob: "if it's a
+// different language I don't even wanna get to see it").
+const JOB_FORMS = new Set(["employment-application"]);
+
+// The text with every word that makes language() call it non-English blanked
+// out, links left whole. The guard keeps its word list private, so each word
+// is asked about on its own (three copies: language() needs three foreign words).
+function withoutForeignWords(s) {
+  return normalize(s).replace(/\b(?:https?:\/\/|www\.)\S+|[\p{L}']+/giu, (w) =>
+    (/^(?:https?:|www\.)/i.test(w) || language(`${w} ${w} ${w}`) !== "foreign" ? w : " "));
+}
+
 function leadGuard(form, d) {
   const text = Object.entries(d)
     .filter(([k, v]) => !NOT_TEXT.has(k) && typeof v === "string")
     .map(([, v]) => v)
     .join("\n");
   const fields = { name: d.name, email: d.email, phone: d.phone, message: d.message || d["work-summary"], text };
-  const opts = { human: d.human, honeypot: d["bot-field"], nonEnglish: "drop" };
+  const job = JOB_FORMS.has(form);
+  const opts = { human: d.human, honeypot: d["bot-field"], nonEnglish: job ? "quiet" : "drop" };
   const verdict = triage(fields, opts);
   // careers.html invites Spanish ("¿Hablas español? Aplica aquí", "Puede
-  // responder en español"), so a Spanish application from someone who picked
-  // Español is judged on everything except its language. triage() only gets to
-  // the language test after the spam-word, price-template and link tests have
-  // passed, so re-running it without the free text still requires the human
-  // token, a real phone and a real name.
-  if (form === "employment-application" && verdict.action === "drop" && verdict.reason === "not English" &&
+  // responder en español"), so an application from someone who picked Español
+  // is judged on everything except its language. triage() tests the language
+  // before links and pitches, so it runs again with the foreign words blanked
+  // out: a link shortener, a pitch, look-alike letters, a fake phone or email
+  // still keep it quiet. The reason is exactly "not English" only when the
+  // human token is valid, so a bot never gets here.
+  if (job && verdict.action === "quiet" && verdict.reason === "not English" &&
       /^espa/i.test(String(d.language || ""))) {
-    return triage({ ...fields, message: "", text: "" }, opts);
+    return triage({ ...fields, message: withoutForeignWords(fields.message), text: withoutForeignWords(fields.text) }, opts);
   }
   return verdict;
 }
