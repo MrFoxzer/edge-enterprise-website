@@ -35,6 +35,11 @@ NAV = """
         </div>
     </nav>"""
 
+# Invisible human check for the lead forms (js/human-check.js; server half is
+# netlify/functions/_lib/lead-guard.js). Loaded only on pages with a form.
+HUMAN_CHECK_JS = """
+    <script src="/js/human-check.js" defer></script>"""
+
 FOOTER = """
     <footer class="footer">
         <div class="container">
@@ -293,8 +298,9 @@ def build_contact():
                 <div class="city-context-main">
                     <span class="section-label">SEND A MESSAGE</span>
                     <h2 class="section-title">Request a <span class="text-accent">Free Estimate</span></h2>
-                    <form class="contact-form" name="contact-plans" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" style="margin-top:24px">
+                    <form class="contact-form" name="contact-plans" method="POST" action="/thank-you.html" data-netlify="true" data-human-check netlify-honeypot="bot-field" enctype="multipart/form-data" style="margin-top:24px">
                         <input type="hidden" name="form-name" value="contact-plans">
+                        <input type="hidden" name="human">
                         <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
                         <div class="form-group">
                             <input type="text" id="formName" name="name" required placeholder=" ">
@@ -357,7 +363,7 @@ def build_contact():
     </section>"""
     write("contact.html", head("Contact Us | Free Framing Estimates | Edge Enterprise LLC",
                                "Contact Edge Enterprise LLC for commercial framing, multi-family, and finished carpentry estimates in MN, ND, WI & MT. Send your plans through our form and one of us will call or email you back within one business day.",
-                               "contact.html", schema) + NAV + body + FOOTER)
+                               "contact.html", schema) + NAV + body + HUMAN_CHECK_JS + FOOTER)
 
     # thank-you + application-received pages
     for fname, title, msg in [

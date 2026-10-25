@@ -69,8 +69,9 @@
                 <div class="city-context-main">
                     <span class="section-label">SEND A MESSAGE</span>
                     <h2 class="section-title">Request a <span class="text-accent">Free Estimate</span></h2>
-                    <form class="contact-form" name="contact-plans" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" style="margin-top:24px">
+                    <form class="contact-form" name="contact-plans" method="POST" action="/thank-you.html" data-netlify="true" data-human-check netlify-honeypot="bot-field" enctype="multipart/form-data" style="margin-top:24px">
                         <input type="hidden" name="form-name" value="contact-plans">
+                        <input type="hidden" name="human">
                         <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
                         <div class="form-group">
                             <input type="text" id="formName" name="name" required placeholder=" ">
@@ -131,6 +132,7 @@
             </div>
         </div>
     </section>
+    <script src="/js/human-check.js" defer></script>
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">

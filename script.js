@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Contact Form ----
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const btn = contactForm.querySelector('button[type="submit"]');
@@ -237,6 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
 
             const data = new FormData(contactForm);
+            // Invisible human check (js/human-check.js), bound to the email + phone
+            // being sent; the lead guard in submission-created.js checks it.
+            if (window.HumanCheck) {
+                data.set('human', await window.HumanCheck.token(data.get('email') || '', data.get('phone') || ''));
+            }
             fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(data).toString() })
             .then(() => {

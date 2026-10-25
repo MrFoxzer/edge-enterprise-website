@@ -120,8 +120,9 @@
                     <h2 id="application-title">Bring Your Framing Experience to Edge</h2>
                     <p>If you know framing and are looking for full-time work in Minnesota or North Dakota, apply below. It takes about two minutes. A résumé is welcome but not required. Starting pay is $22/hr, with more based on experience. Lodging is provided, and you must be willing to travel to job sites across Minnesota and North Dakota.</p>
                 </div>
-                <form class="application-form" name="employment-application" method="POST" action="/application-received" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+                <form class="application-form" name="employment-application" method="POST" action="/application-received" data-netlify="true" data-human-check netlify-honeypot="bot-field" enctype="multipart/form-data">
                     <input type="hidden" name="form-name" value="employment-application">
+                    <input type="hidden" name="human">
                     <input type="hidden" name="subject" value="Employment application - MN/ND">
                     <p class="honeypot"><label>Do not fill this out if you are human <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
                     <p class="form-intro">Fields marked * are required. Puede responder en español.</p>
@@ -148,6 +149,7 @@
     </main>
 
     <footer class="site-footer"><div class="content"><img src="logo.png" alt="Edge Enterprise LLC"><p>© 2026 Edge Enterprise LLC. All rights reserved.</p></div></footer>
+    <script src="/js/human-check.js" defer></script>
     <script src="careers.js?v=nc3"></script>
 </body>
 </html>

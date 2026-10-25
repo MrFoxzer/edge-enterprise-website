@@ -2,7 +2,7 @@
 """Extra pages: for-gcs, estimate calculator, Rogers case study, locations index."""
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from generate_core_pages import head, hero, CTA_BAND, NAV, FOOTER, write
+from generate_core_pages import head, hero, CTA_BAND, NAV, FOOTER, HUMAN_CHECK_JS, write
 
 
 def build_for_gcs():
@@ -52,8 +52,9 @@ def build_for_gcs():
                 <h2 class="section-title">Add Edge to Your <span class="text-accent">Bid List</span></h2>
                 <p class="section-subtitle">Tell us who to send bids and quals to — we reply with our full prequalification package.</p>
             </div>
-            <form class="contact-form" name="bid-list" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" style="max-width:640px;margin:24px auto 0">
+            <form class="contact-form" name="bid-list" method="POST" action="/thank-you.html" data-netlify="true" data-human-check netlify-honeypot="bot-field" style="max-width:640px;margin:24px auto 0">
                 <input type="hidden" name="form-name" value="bid-list">
+                <input type="hidden" name="human">
                 <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
                 <div class="form-group"><input type="text" id="gcName" name="name" required placeholder=" "><label for="gcName">Your Name</label><div class="form-line"></div></div>
                 <div class="form-group"><input type="text" id="gcCompany" name="company" required placeholder=" "><label for="gcCompany">GC / Company</label><div class="form-line"></div></div>
@@ -65,7 +66,7 @@ def build_for_gcs():
     </section>"""
     write("for-gcs.html", head("Subcontractor Prequalification for GCs | Edge Enterprise LLC",
                                "Add Edge Enterprise to your bid list: framing subcontractor prequalification — insurance, certified payroll capability, 1,000+ units framed, references from repeat GC partners.",
-                               "for-gcs.html", schema) + NAV + body + FOOTER)
+                               "for-gcs.html", schema) + NAV + body + HUMAN_CHECK_JS + FOOTER)
 
 
 def build_estimate():
