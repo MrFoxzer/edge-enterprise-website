@@ -1149,7 +1149,8 @@ def main():
             ("about.html", "0.8"), ("services.html", "0.9"), ("projects.html", "0.8"),
             ("contact.html", "0.8"), ("careers.html", "0.7"), ("blog.html", "0.8"),
             ("for-gcs.html", "0.8"), ("estimate.html", "0.8"), ("faq.html", "0.8"),
-            ("projects/rogers-senior-living.html", "0.8")]
+            ("projects/rogers-senior-living.html", "0.8"),
+            ("projects/45th-street-apartments-fargo.html", "0.8")]
     import glob as _glob
     for _bp in sorted(_glob.glob(os.path.join(ROOT, "blog", "*.html"))):
         core.append(("blog/" + os.path.basename(_bp), "0.7"))

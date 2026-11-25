@@ -270,7 +270,7 @@ def build_projects():
     <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>"""
     body = hero("OUR PORTFOLIO",
                 'Projects That <span class="text-accent">Speak for Themselves</span>',
-                "Multi-family communities, senior living, commercial builds, and custom retreats — framed by Edge Enterprise crews alongside GC partners Comeland Builders, Gast Construction, and Miller Architects & Builders.") + section_html + CTA_BAND
+                "Multi-family communities, senior living, commercial builds, and custom retreats — framed by Edge Enterprise crews alongside GC partners Comeland Builders, Gast Construction, Meridian Commercial Construction, and Miller Architects & Builders.") + section_html + CTA_BAND
     schema = """    {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
